@@ -1,4 +1,4 @@
-package com.pqndaa.mymod.world.biome;
+package com.pqndaa.mymod.init.world.biome;
 
 import com.pqndaa.mymod.MainMod;
 import com.pqndaa.mymod.init.BlockInit;

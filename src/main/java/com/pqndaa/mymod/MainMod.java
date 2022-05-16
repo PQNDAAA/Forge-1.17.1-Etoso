@@ -3,7 +3,9 @@ package com.pqndaa.mymod;
 import com.pqndaa.mymod.event.CommonModEvents;
 import com.pqndaa.mymod.init.BlockInit;
 import com.pqndaa.mymod.init.ItemInit;
-import com.pqndaa.mymod.world.biome.ModBiomes;
+import com.pqndaa.mymod.init.thirstsystem.ManageThirst;
+import com.pqndaa.mymod.init.world.biome.ModBiomes;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -33,11 +35,15 @@ public class MainMod {
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        Minecraft mc = Minecraft.getInstance();
+
         ItemInit.ITEMS.register(bus);
         BlockInit.BLOCKS.register(bus);
         ModBiomes.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
+
+        MinecraftForge.EVENT_BUS.register(new ManageThirst(mc));
 
         CommonModEvents.setup();
         bus.addListener(CommonModEvents::init);

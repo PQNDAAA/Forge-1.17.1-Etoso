@@ -1,4 +1,4 @@
-package com.pqndaa.mymod.world;
+package com.pqndaa.mymod.init.world;
 
 import com.pqndaa.mymod.init.BlockInit;
 import net.minecraft.world.level.block.Block;
