@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mymod:plaxotium_block"
+    }
+  ],
+  "result": {
+    "item": "mymod:plaxotium_ingot",
+    "count": 9
+  }
+}

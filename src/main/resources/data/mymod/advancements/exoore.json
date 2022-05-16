@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "mymod:exo_ore"
+    },
+    "title": "Exo Ore!!!",
+    "description": "",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+   "parent": "mymod:portal",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions":{
+      	"items": [
+      	{
+      		"items": [
+      			"mymod:exo_ore"
+      		]
+      	}
+      	]
+      }
+    }
+  }
+}

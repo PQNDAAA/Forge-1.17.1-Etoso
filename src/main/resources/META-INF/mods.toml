@@ -1,0 +1,26 @@
+modLoader="javafml" 
+loaderVersion="[37,)"
+license="PQNDAA"
+[[mods]] 
+modId="mymod" 
+version="${file.jarVersion}" #mandatory
+displayName="My Mod" 
+logoFile="examplemod.png" #optional
+credits="My mod is the better" 
+authors="PQNDAA" 
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+My mod is very very the better 
+'''
+[[dependencies.mymod]] #optional
+    modId="forge"
+    mandatory=true 
+    versionRange="[37,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.mymod]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.17.1,1.18)"
+    ordering="NONE"
+    side="BOTH"

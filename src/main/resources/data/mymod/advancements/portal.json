@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "mymod:portal"
+    },
+    "title": "Go to Mine Dimension!!",
+    "description": "",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+ "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions":{
+      	"items": [
+      	{
+      		"items": [
+      			"mymod:portal"
+      		]
+      	}
+      	]
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+	"item.mymod.example_item": "Example Item",
+	"itemGroup.mymod": "Exo",
+	"block.mymod.exo_ore": "Exo Ore",
+	"block.mymod.portal": "Mine Portal",
+	"item.mymod.exo_ingot": "Exo Ingot",
+	"block.mymod.exo_block": "Exo Block",
+	"item.mymod.plaxotium_ingot": "Plaxotium Ingot",
+	"block.mymod.plaxotium_ore": "Plaxotium Ore",
+	"block.mymod.plaxotium_block": "Plaxotium Block",
+	"item.mymod.exo_sword": "Exo Sword",
+	"item.mymod.water_bottle": "Water Bottle",
+	"biome.mymod.example_biome":"Example Biome"
+}

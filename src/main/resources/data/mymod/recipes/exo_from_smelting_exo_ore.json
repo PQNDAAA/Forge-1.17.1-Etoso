@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mymod:exo_ore"
+  },
+  "result": "mymod:exo_ingot",
+  "experience": 0.3,
+  "cookingtime": 200
+}

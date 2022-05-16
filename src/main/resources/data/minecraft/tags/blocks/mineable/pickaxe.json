@@ -1,0 +1,9 @@
+{
+	"replace": false,
+	"values": [ 
+		"mymod:exo_ore",
+		"mymod:exo_block",
+		"mymod:plaxotium_ore",
+		"mymod:plaxotium_block"
+	]
+}

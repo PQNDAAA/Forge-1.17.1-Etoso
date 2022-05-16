@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mymod:plaxotium_ore"
+  },
+  "result": "mymod:plaxotium_ingot",
+  "experience": 0.3,
+  "cookingtime": 200
+}
