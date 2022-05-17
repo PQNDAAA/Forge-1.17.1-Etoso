@@ -46,7 +46,7 @@ public class ModBiomes {
         return (new Biome.BiomeBuilder()).precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.NONE)
                 .depth(0.125F).scale(0.05F).temperature(0.8F).downfall(0.4F)
                 .specialEffects((new BiomeSpecialEffects.Builder())
-                        .waterColor(0x18253f).waterFogColor(0x050533)
+                        .waterColor(0xe43f3f).waterFogColor(0x050533)
                         .fogColor(0xc0d8ff).skyColor(0x77adff)
                         .build()).mobSpawnSettings(spawnSettings.build())
                 .generationSettings(generationSettings.build()).build();

@@ -31,8 +31,8 @@ public class ThirstData {
             addExhaustion(0.001F);
         }
 
-        if(this.exhaustionLevel > 2.0F) {
-            this.exhaustionLevel -= 2.0F;
+        if(this.exhaustionLevel > 4.0F) {
+            this.exhaustionLevel -= 4.0F;
             if(this.saturationLevel > 0.0F) {
                 this.saturationLevel = Math.max(this.saturationLevel - 1.0F, 0.0F);
             } else if(difficulty != difficulty.PEACEFUL) {

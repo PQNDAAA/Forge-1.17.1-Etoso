@@ -1,18 +1,18 @@
 package com.pqndaa.mymod.init;
 
-import java.util.function.Function;
-
 import com.google.common.base.Supplier;
 import com.pqndaa.mymod.MainMod;
-
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.function.Function;
 
 public class BlockInit {
 
@@ -40,6 +40,10 @@ public class BlockInit {
 	public static final RegistryObject<Block> PORTAL_BLOCK = register("portal", PortalBlock::new,
 			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
 
+	public static final RegistryObject<Block> BURN_GRASS = register("burn_grass",
+			() -> new Block(BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.GRASS).strength(2.0F,8.0F)),
+			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
+
 	private static <T extends Block> RegistryObject<T> registerBlock(final String name,
 			final Supplier<? extends T> block) {
 		return BLOCKS.register(name, block);
@@ -51,5 +55,4 @@ public class BlockInit {
 		ITEMS.register(name, item.apply(obj));
 		return obj;
 	}
-
 }

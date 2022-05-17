@@ -14,7 +14,7 @@ public class ModSurfaceConfigs {
 
     public static final ConfiguredSurfaceBuilder<SurfaceBuilderBaseConfiguration> LAVA_SURFACE_BUILDER =
             register("lava_surface", SurfaceBuilder.DEFAULT.configured(new SurfaceBuilderBaseConfiguration(
-                    Blocks.GRASS_BLOCK.defaultBlockState(),
+                    BlockInit.BURN_GRASS.get().defaultBlockState(),
                     Blocks.DIRT.defaultBlockState(),
                     Blocks.SAND.defaultBlockState())));
 

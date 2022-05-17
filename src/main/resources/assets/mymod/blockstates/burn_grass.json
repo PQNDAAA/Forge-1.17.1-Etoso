@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "mymod:block/burn_grass"
+    }
+  }
+}
