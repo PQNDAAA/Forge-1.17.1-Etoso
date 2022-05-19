@@ -2,11 +2,8 @@ package com.pqndaa.mymod.init;
 
 import com.google.common.base.Supplier;
 import com.pqndaa.mymod.MainMod;
-import com.pqndaa.mymod.init.customitems.DowsingItems;
-
+import net.minecraft.world.item.BottleItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Item.Properties;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -29,7 +26,7 @@ public class ItemInit {
 			() -> new SwordItem(ModTiers.EXO,20,5f,new Item.Properties().tab(MainMod.TAB)));
 
 	public static final RegistryObject<Item> WATER_BOTTLE = ITEMS.register("water_bottle", 
-			() -> new DowsingItems(new Item.Properties().tab(MainMod.TAB)));
+			() -> new BottleItem(new Item.Properties().tab(MainMod.TAB)));
    
 	
 	private static <T extends Item> RegistryObject<T> register(final String name, final Supplier<T> item) {
