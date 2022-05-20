@@ -2,6 +2,7 @@ package com.pqndaa.mymod.init;
 
 import com.google.common.base.Supplier;
 import com.pqndaa.mymod.MainMod;
+import com.pqndaa.mymod.init.customitems.Water_Bottle;
 import net.minecraft.world.item.BottleItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SwordItem;
@@ -18,7 +19,6 @@ public class ItemInit {
 
 	public static final RegistryObject<Item> PLAXOTIUM_INGOT = register("plaxotium_ingot",
 			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
-
 	public static final RegistryObject<Item> EXAMPLE_ITEM = register("example_item",
 			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
 	
@@ -26,7 +26,7 @@ public class ItemInit {
 			() -> new SwordItem(ModTiers.EXO,20,5f,new Item.Properties().tab(MainMod.TAB)));
 
 	public static final RegistryObject<Item> WATER_BOTTLE = ITEMS.register("water_bottle", 
-			() -> new BottleItem(new Item.Properties().tab(MainMod.TAB)));
+			() -> new Water_Bottle(new Item.Properties().tab(MainMod.TAB).stacksTo(1),0,6));
    
 	
 	private static <T extends Item> RegistryObject<T> register(final String name, final Supplier<T> item) {

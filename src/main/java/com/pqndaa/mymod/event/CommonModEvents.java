@@ -1,6 +1,5 @@
 package com.pqndaa.mymod.event;
 
-import com.pqndaa.mymod.init.customitems.DowsingItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;

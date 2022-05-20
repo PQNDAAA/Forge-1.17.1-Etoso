@@ -1,12 +1,6 @@
 {
-  "parent": "block/cube",
+  "parent": "block/cube_all",
   "textures": {
-    "particle": "mymod:block/burn_grass",
-    "north": "mymod:block/burn_grass_side",
-    "south": "mymod:block/burn_grass_side",
-    "west": "mymod:block/burn_grass_side",
-    "east": "mymod:block/burn_grass_side",
-    "up": "mymod:block/burn_grass_top",
-    "down": "mymod:block/burn_grass_top"
+    "all": "mymod:block/burn_grass"
   }
 }
