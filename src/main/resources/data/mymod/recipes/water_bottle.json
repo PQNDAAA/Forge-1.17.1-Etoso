@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " Z ",
+    " X ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:glass"
+    },
+    "Z": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "mymod:water_bottle"
+  }
+}

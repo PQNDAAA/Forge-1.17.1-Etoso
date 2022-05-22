@@ -17,9 +17,15 @@ public class ItemInit {
 	public static final RegistryObject<Item> EXO_INGOT = register("exo_ingot",
 			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
 
+	public static final RegistryObject<Item> TRITIUM_INGOT = register("tritium_ingot",
+			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
+
 	public static final RegistryObject<Item> PLAXOTIUM_INGOT = register("plaxotium_ingot",
 			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
 	public static final RegistryObject<Item> EXAMPLE_ITEM = register("example_item",
+			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> ROPE = register("rope",
 			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
 	
 	public static final RegistryObject<SwordItem> EXO_SWORD = ITEMS.register("exo_sword", 

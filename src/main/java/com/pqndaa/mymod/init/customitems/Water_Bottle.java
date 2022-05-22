@@ -20,6 +20,7 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 
@@ -36,42 +37,50 @@ public class Water_Bottle extends Item {
         this.MaxSips = MaxSips;
     }
 
-    public InteractionResultHolder<ItemStack> use(Level p_40656_, Player p_40657_, InteractionHand p_40658_) {
-        List<AreaEffectCloud> list = p_40656_.getEntitiesOfClass(AreaEffectCloud.class, p_40657_.getBoundingBox().inflate(2.0D), (p_40650_) -> {
-            return p_40650_ != null && p_40650_.isAlive() && p_40650_.getOwner() instanceof EnderDragon;
+    public InteractionResultHolder<ItemStack> use(Level level, Player p, InteractionHand interactionhand) {
+        List<AreaEffectCloud> list = level.getEntitiesOfClass(AreaEffectCloud.class, p.getBoundingBox().inflate(2.0D), (predicate) -> {
+            return predicate != null && predicate.isAlive() && predicate.getOwner() instanceof EnderDragon;
         });
-        ItemStack itemstack = p_40657_.getItemInHand(p_40658_);
+        ItemStack itemstack = p.getItemInHand(interactionhand);
+        HitResult hitresult = getPlayerPOVHitResult(level, p, ClipContext.Fluid.SOURCE_ONLY);
+        BlockPos blockpos = ((BlockHitResult)hitresult).getBlockPos();
+
+        if(level.getBlockState(blockpos).getMaterial() == Material.AIR && this.Sips > 0){
+            level.playSound((Player)null, p.getX(), p.getY(), p.getZ(), SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.NEUTRAL, 1.0F, 1.0F);
+            --this.Sips;
+            System.out.println(this.Sips+"/"+this.MaxSips);
+        }
         if (!list.isEmpty()) {
             AreaEffectCloud areaeffectcloud = list.get(0);
             areaeffectcloud.setRadius(areaeffectcloud.getRadius() - 0.5F);
-            p_40656_.playSound((Player)null, p_40657_.getX(), p_40657_.getY(), p_40657_.getZ(), SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.NEUTRAL, 1.0F, 1.0F);
-            p_40656_.gameEvent(p_40657_, GameEvent.FLUID_PICKUP, p_40657_.blockPosition());
-            return InteractionResultHolder.pass(itemstack);
+            level.playSound((Player)null, p.getX(), p.getY(), p.getZ(), SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.NEUTRAL, 1.0F, 1.0F);
+            return InteractionResultHolder.success(itemstack);
         } else {
-            HitResult hitresult = getPlayerPOVHitResult(p_40656_, p_40657_, ClipContext.Fluid.SOURCE_ONLY);
             if (hitresult.getType() == HitResult.Type.MISS) {
-                return InteractionResultHolder.pass(itemstack);
+                return InteractionResultHolder.success(itemstack);
             } else {
                 if (hitresult.getType() == HitResult.Type.BLOCK) {
-                    BlockPos blockpos = ((BlockHitResult)hitresult).getBlockPos();
-                    if (!p_40656_.mayInteract(p_40657_, blockpos)) {
-                        return InteractionResultHolder.pass(itemstack);
+
+                    if (!level.mayInteract(p, blockpos)) {
+                        return InteractionResultHolder.success(itemstack);
                     }
 
-                    if (p_40656_.getFluidState(blockpos).is(FluidTags.WATER)) {
-                        p_40656_.playSound(p_40657_, p_40657_.getX(), p_40657_.getY(), p_40657_.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL, 1.0F, 1.0F);
-                        p_40656_.gameEvent(p_40657_, GameEvent.FLUID_PICKUP, blockpos);
-                        return InteractionResultHolder.pass(itemstack);
+                    if (level.getFluidState(blockpos).is(FluidTags.WATER) && this.Sips <= this.MaxSips) {
+                        level.playSound(p, p.getX(), p.getY(), p.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL, 1.0F, 1.0F);
+                        ++this.Sips;
+                        System.out.println(this.Sips+"/"+this.MaxSips);
+                        return InteractionResultHolder.success(itemstack);
                     }
                 }
-
-                return InteractionResultHolder.pass(itemstack);
+                return InteractionResultHolder.success(itemstack);
             }
         }
     }
 
-    protected ItemStack turnBottleIntoItem(ItemStack p_40652_, Player p_40653_, ItemStack p_40654_) {
-        p_40653_.awardStat(Stats.ITEM_USED.get(this));
-        return ItemUtils.createFilledResult(p_40652_, p_40653_, p_40654_);
+    public int getMaxSips(){
+        return this.MaxSips;
+    }
+    public int getSips(){
+        return this.Sips;
     }
 }

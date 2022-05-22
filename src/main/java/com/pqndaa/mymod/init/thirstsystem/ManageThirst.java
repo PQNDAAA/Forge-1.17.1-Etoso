@@ -4,6 +4,7 @@ package com.pqndaa.mymod.init.thirstsystem;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.pqndaa.mymod.MainMod;
 import com.pqndaa.mymod.init.ItemInit;
+import com.pqndaa.mymod.init.customitems.Water_Bottle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -49,9 +50,6 @@ public class ManageThirst extends Gui {
 	public Level level;
 	private static Minecraft mc = Minecraft.getInstance();
 
-	private int MaxSips = 6;
-	private int currentSips = 0;
-
 	public ManageThirst(Minecraft mc) {
 		super(mc);
 	}
@@ -77,11 +75,10 @@ public class ManageThirst extends Gui {
 	}
 
 
-	public int getMaxSips(){
-		return this.MaxSips;
-	}
-	public int getSips(){
-		return this.currentSips;
+	@SubscribeEvent
+	public void onRightClick(PlayerInteractEvent.LeftClickBlock event){
+
+
 	}
 }
 

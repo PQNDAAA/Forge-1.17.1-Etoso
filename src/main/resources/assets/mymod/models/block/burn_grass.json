@@ -1,6 +1,22 @@
 {
-  "parent": "block/cube_all",
+  "parent": "block/block",
   "textures": {
-    "all": "mymod:block/burn_grass"
-  }
+    "particle": "mymod:block/burn_grass",
+    "0": "mymod:block/burn_grass_side",
+    "1": "mymod:block/burn_grass"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "north": {"uv": [16, 16, 0, 1], "rotation": 180, "texture": "#0"},
+        "east": {"uv": [16, 16, 0, 1], "rotation": 180, "texture": "#0"},
+        "south": {"uv": [16, 16, 0, 1], "rotation": 180, "texture": "#0"},
+        "west": {"uv": [16, 16, 0, 1], "rotation": 180, "texture": "#0"},
+        "up": {"uv": [16, 16, 0, 0], "rotation": 180, "texture": "#1"},
+        "down": {"uv": [16, 16, 0, 0], "rotation": 180, "texture": "#1"}
+      }
+    }
+  ]
 }
