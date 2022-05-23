@@ -3,9 +3,7 @@ package com.pqndaa.mymod.init;
 import com.google.common.base.Supplier;
 import com.pqndaa.mymod.MainMod;
 import com.pqndaa.mymod.init.customitems.Water_Bottle;
-import net.minecraft.world.item.BottleItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.*;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -29,7 +27,13 @@ public class ItemInit {
 			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
 	
 	public static final RegistryObject<SwordItem> EXO_SWORD = ITEMS.register("exo_sword", 
-			() -> new SwordItem(ModTiers.EXO,20,5f,new Item.Properties().tab(MainMod.TAB)));
+			() -> new SwordItem(ModTiers.EXO,4,-2.4f,new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<PickaxeItem> EXO_PICKAXE = ITEMS.register("exo_pickaxe",
+			() -> new PickaxeItem(ModTiers.EXO,2,-2.8f,new Item.Properties().tab(MainMod.TAB).durability(1500)));
+
+	public static final RegistryObject<AxeItem> EXO_AXE = ITEMS.register("exo_axe",
+			() -> new AxeItem(ModTiers.EXO,6,-3.1f,new Item.Properties().tab(MainMod.TAB)));
 
 	public static final RegistryObject<Item> WATER_BOTTLE = ITEMS.register("water_bottle", 
 			() -> new Water_Bottle(new Item.Properties().tab(MainMod.TAB).stacksTo(1),0,6));
