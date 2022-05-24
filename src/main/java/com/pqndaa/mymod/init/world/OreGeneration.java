@@ -22,8 +22,9 @@ import java.util.Arrays;
 public class OreGeneration {
 
 	public static void generateOres(final BiomeLoadingEvent event) {
-		spawnOreInOverworldInAllBiomes(OreType.EXO_BLOCK, event);
+		spawnOreInOverworldInAllBiomes(OreType.TRITIUM_ORE, event);
 		spawnOreInOverworldInAllBiomes(OreType.EXO_ORE, event);
+		spawnOreInOverworldInAllBiomes(OreType.PLAXOTIUM_ORE, event);
 	}
 
 	private static OreConfiguration getOverworldFeatureConfig(OreType ore) {

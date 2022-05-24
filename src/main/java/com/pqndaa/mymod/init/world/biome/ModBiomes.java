@@ -3,6 +3,7 @@ package com.pqndaa.mymod.init.world.biome;
 import com.pqndaa.mymod.MainMod;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.Features;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
@@ -10,16 +11,34 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.FeatureDecorator;
 import net.minecraft.world.level.levelgen.placement.FrequencyWithExtraChanceDecoratorConfiguration;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.Objects;
 
 public class ModBiomes {
 
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, MainMod.MOD_ID);
 
     public static final RegistryObject<Biome> LAVA_LAND = BIOMES.register("lava_land", ModBiomes::createLavaLand);
+
+
+
+    public static void generateBiomes(){
+        addBiome(LAVA_LAND.get(),BiomeManager.BiomeType.DESERT,20,Type.HOT,Type.DEAD,Type.DRY);
+    }
+    private static void addBiome(Biome biome, BiomeManager.BiomeType type, int weight, BiomeDictionary.Type... types)
+    {
+        ResourceKey<Biome> key = ResourceKey.create(ForgeRegistries.Keys.BIOMES, Objects.requireNonNull(ForgeRegistries.BIOMES.getKey(biome)));
+
+        BiomeDictionary.addTypes(key,types);
+        BiomeManager.addBiome(type, new BiomeManager.BiomeEntry(key,weight));
+    }
 
     private static Biome createLavaLand() {
         MobSpawnSettings.Builder spawnSettings = new MobSpawnSettings.Builder();

@@ -10,9 +10,11 @@
 	"item.mymod.exo_pickaxe": "Exo Pickaxe",
 	"item.mymod.exo_axe": "Exo Axe",
 	"block.mymod.exo_ore": "Exo Ore",
+	"block.mymod.plaxotium_ore": "Plaxotium Ore",
+	"block.mymod.tritium_ore": "Tritium Ore",
 	"block.mymod.portal": "Mine Portal",
 	"block.mymod.exo_block": "Exo Block",
-	"block.mymod.plaxotium_ore": "Plaxotium Ore",
 	"block.mymod.plaxotium_block": "Plaxotium Block",
+	"block.mymod.tritium_block": "Tritium Block",
 	"block.mymod.burn_grass": "Burn Grass"
 }

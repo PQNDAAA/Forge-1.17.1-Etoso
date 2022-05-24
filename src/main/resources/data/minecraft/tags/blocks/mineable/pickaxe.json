@@ -4,6 +4,8 @@
 		"mymod:exo_ore",
 		"mymod:exo_block",
 		"mymod:plaxotium_ore",
-		"mymod:plaxotium_block"
+		"mymod:plaxotium_block",
+		"mymod:tritium_ore",
+		"mymod:tritium_block"
 	]
 }

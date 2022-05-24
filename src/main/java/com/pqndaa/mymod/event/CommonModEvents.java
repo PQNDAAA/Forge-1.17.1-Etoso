@@ -1,5 +1,6 @@
 package com.pqndaa.mymod.event;
 
+import com.pqndaa.mymod.init.world.biome.ModBiomes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -11,7 +12,9 @@ public class CommonModEvents {
 	}
 	
 	public static void init(FMLCommonSetupEvent event) {
-
+		event.enqueueWork(() -> {
+			ModBiomes.generateBiomes();
+		});
 		
 	}
 

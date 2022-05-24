@@ -6,8 +6,11 @@ import net.minecraftforge.common.util.Lazy;
 
 public enum OreType {
 
-    EXO_ORE(Lazy.of(BlockInit.EXO_ORE), 8, 25, 50, 10),
-    EXO_BLOCK(Lazy.of(BlockInit.EXO_BLOCK), 5, 10, 80, 16);
+    EXO_ORE(Lazy.of(BlockInit.EXO_ORE), 7, 34, 126, 9),
+
+    PLAXOTIUM_ORE(Lazy.of(BlockInit.PLAXOTIUM_ORE), 5, 3, 16, 4),
+
+    TRITIUM_ORE(Lazy.of(BlockInit.TRITIUM_ORE), 3, 9, 16, 4);
 
     private final Lazy<Block> block;
     private final int maxVeinSize;

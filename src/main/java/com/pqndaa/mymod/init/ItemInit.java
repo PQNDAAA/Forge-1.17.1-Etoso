@@ -27,7 +27,7 @@ public class ItemInit {
 			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
 	
 	public static final RegistryObject<SwordItem> EXO_SWORD = ITEMS.register("exo_sword", 
-			() -> new SwordItem(ModTiers.EXO,4,-2.4f,new Item.Properties().tab(MainMod.TAB)));
+			() -> new SwordItem(ModTiers.EXO,4,-2.3f,new Item.Properties().tab(MainMod.TAB)));
 
 	public static final RegistryObject<PickaxeItem> EXO_PICKAXE = ITEMS.register("exo_pickaxe",
 			() -> new PickaxeItem(ModTiers.EXO,2,-2.8f,new Item.Properties().tab(MainMod.TAB).durability(1500)));

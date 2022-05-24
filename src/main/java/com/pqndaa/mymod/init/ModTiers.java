@@ -11,4 +11,5 @@ public class ModTiers {
 
     //DIAMOND(3, 1561, 8.0F, 3.0F, 10, ()
     //SwordItem(ModTiers.EXO,4 -> 6,-2.4f -> ,new Item.Properties().tab(MainMod.TAB)));
+    //MIN SPEED -4.0 = 0 speed attack
 }

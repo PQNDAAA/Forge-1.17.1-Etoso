@@ -28,12 +28,19 @@ public class BlockInit {
 	public static final RegistryObject<Block> PLAXOTIUM_ORE = register("plaxotium_ore",
 			() -> new Block(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.0f)),
 			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
-	
+
+	public static final RegistryObject<Block> TRITIUM_ORE = register("tritium_ore",
+			() -> new Block(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.0f)),
+			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
+	public static final RegistryObject<Block> EXO_BLOCK = register("exo_block",
+			() -> new Block(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.0f)),
+			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
+
 	public static final RegistryObject<Block> PLAXOTIUM_BLOCK = register("plaxotium_block",
 			() -> new Block(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.0f)),
 			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
 
-	public static final RegistryObject<Block> EXO_BLOCK = register("exo_block",
+	public static final RegistryObject<Block> TRITIUM_BLOCK = register("tritium_block",
 			() -> new Block(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.0f)),
 			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
 
