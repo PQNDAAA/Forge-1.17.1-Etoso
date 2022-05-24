@@ -2,6 +2,7 @@ package com.pqndaa.mymod.init.thirstsystem;
 
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.pqndaa.mymod.MainMod;
 import com.pqndaa.mymod.init.ItemInit;
 import com.pqndaa.mymod.init.customitems.Water_Bottle;
@@ -30,6 +31,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
@@ -38,6 +40,9 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fmlclient.gui.GuiUtils;
+import org.apache.logging.log4j.core.pattern.FormattingInfo;
+
+import java.awt.*;
 
 public class ManageThirst extends Gui {
 
@@ -62,12 +67,29 @@ public class ManageThirst extends Gui {
 				RenderSystem.setShaderTexture(0, bar);
 				float oneUnit = (float) bar_width / 20;
 				int currentWidth = (int) (oneUnit * this.thirstdata.getThirstLevel());
-				//mc.player.sendMessage(new TextComponent("Waterlevel: " + this.thirstdata.getExhaustionLevel()), mc.player.getUUID());
+				//mc.player.sendMessage(new TextComponent("Waterlevel: " + this.thirstdata.getThirstLevel()), mc.player.getUUID());
 				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), 240, 221, 0, 0, tex_width, tex_height, 10);
 				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), 240, 221, 1, tex_height, currentWidth, bar_height, 10);
+				drawString(event.getMatrixStack(),mc.font,  "ThirstLevel: "+ thirstdata.getThirstLevel(), 5, 5, Integer.parseInt("FFAA00", 16));
 			}
 		}
 	}
+
+	@SubscribeEvent
+	public void rightclickItem(PlayerInteractEvent.RightClickBlock event) {
+
+		if (event.getItemStack().getItem() instanceof Water_Bottle) {
+			if(thirstdata.needsThirst() && Water_Bottle.Sips > 0) {
+				--Water_Bottle.Sips;
+				System.out.println(Water_Bottle.Sips + "/" + Water_Bottle.MaxSips + " " + thirstdata.getThirstLevel());
+				thirstdata.setThirstLevel(thirstdata.getThirstLevel() + 1);
+				thirstdata.setSaturationLevel(thirstdata.getSaturationLevel() + 4);
+				event.getWorld().playSound((Player) null, event.getPlayer().getX(), event.getPlayer().getY(), event.getPlayer().getZ(),
+						SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.NEUTRAL, 1.0F, 1.0F);
+				}
+			}
+
+		}
 
 	@SubscribeEvent
 	public void Tick(TickEvent.PlayerTickEvent event) {

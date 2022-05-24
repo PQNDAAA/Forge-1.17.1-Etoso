@@ -1,6 +1,9 @@
 package com.pqndaa.mymod.init.customitems;
 
+import com.pqndaa.mymod.init.thirstsystem.ThirstData;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
@@ -21,8 +24,12 @@ import java.util.List;
 
 public class Water_Bottle extends Item {
 
-    private int Sips;
-    private int MaxSips;
+    public static int Sips;
+    public static int MaxSips;
+
+    protected ThirstData thirstdata = new ThirstData();
+
+    private static Minecraft mc = Minecraft.getInstance();
 
     public Water_Bottle(Properties properties, int Sips, int MaxSips) {
         super(properties);
@@ -38,11 +45,6 @@ public class Water_Bottle extends Item {
         HitResult hitresult = getPlayerPOVHitResult(level, p, ClipContext.Fluid.SOURCE_ONLY);
         BlockPos blockpos = ((BlockHitResult)hitresult).getBlockPos();
 
-        if(level.getBlockState(blockpos).getMaterial() == Material.AIR && this.Sips > 0){
-            level.playSound((Player)null, p.getX(), p.getY(), p.getZ(), SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.NEUTRAL, 1.0F, 1.0F);
-            --this.Sips;
-            System.out.println(this.Sips+"/"+this.MaxSips);
-        }
         if (!list.isEmpty()) {
             AreaEffectCloud areaeffectcloud = list.get(0);
             areaeffectcloud.setRadius(areaeffectcloud.getRadius() - 0.5F);
