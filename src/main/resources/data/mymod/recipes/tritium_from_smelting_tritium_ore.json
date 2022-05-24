@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mymod:tritium_ore"
+  },
+  "result": "mymod:tritium_ingot",
+  "experience": 0.3,
+  "cookingtime": 200
+}
