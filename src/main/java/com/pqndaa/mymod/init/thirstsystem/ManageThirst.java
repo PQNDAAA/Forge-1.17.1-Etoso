@@ -7,6 +7,7 @@ import com.pqndaa.mymod.MainMod;
 import com.pqndaa.mymod.init.ItemInit;
 import com.pqndaa.mymod.init.customitems.Water_Bottle;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.core.BlockPos;
@@ -41,6 +42,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fmlclient.gui.GuiUtils;
 import org.apache.logging.log4j.core.pattern.FormattingInfo;
+import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
@@ -64,20 +66,26 @@ public class ManageThirst extends Gui {
 		if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
 			if (!mc.player.isCreative() && (!mc.player.isSpectator())) {
 				TextureManager tm = mc.getTextureManager();
+				//Font font = new Font(new ResourceLocation("textures/gui/flowers.ttf"),);
 				RenderSystem.setShaderTexture(0, bar);
 				float oneUnit = (float) bar_width / 20;
 				int currentWidth = (int) (oneUnit * this.thirstdata.getThirstLevel());
 				//mc.player.sendMessage(new TextComponent("Waterlevel: " + this.thirstdata.getThirstLevel()), mc.player.getUUID());
 				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), 240, 221, 0, 0, tex_width, tex_height, 10);
 				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), 240, 221, 1, tex_height, currentWidth, bar_height, 10);
-				drawString(event.getMatrixStack(),mc.font,  "ThirstLevel: "+ thirstdata.getThirstLevel(), 5, 5, Integer.parseInt("FFAA00", 16));
 			}
+		}
+		if(event.getType() == RenderGameOverlayEvent.ElementType.DEBUG){
+			drawString(event.getMatrixStack(),mc.font,  "ThirstLevel: "+ thirstdata.getThirstLevel(), 5, 5, Integer.parseInt("FFFFFF", 16));
+			drawString(event.getMatrixStack(),mc.font,  "Saturation: "+ thirstdata.getSaturationLevel(), 5, 20, Integer.parseInt("FFFFFF", 16));
+			drawString(event.getMatrixStack(),mc.font,  "Exhaustion: "+ thirstdata.getExhaustionLevel(), 5, 35, Integer.parseInt("FFFFFF", 16));
+			mc.font.drawShadow(event.getMatrixStack(),"ThirstLevel: "+ thirstdata.getThirstLevel(),20,50,Integer.parseInt("FFFFFF", 16));
+
 		}
 	}
 
 	@SubscribeEvent
 	public void rightclickItem(PlayerInteractEvent.RightClickBlock event) {
-
 		if (event.getItemStack().getItem() instanceof Water_Bottle) {
 			if(thirstdata.needsThirst() && Water_Bottle.Sips > 0) {
 				--Water_Bottle.Sips;
