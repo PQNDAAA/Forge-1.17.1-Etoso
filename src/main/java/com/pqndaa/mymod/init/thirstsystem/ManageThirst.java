@@ -63,7 +63,7 @@ public class ManageThirst extends Gui {
 
 	@SubscribeEvent
 	public void GUIThirst(RenderGameOverlayEvent event) {
-		if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
+		if (event.getType() == RenderGameOverlayEvent.ElementType.ALL) {
 			if (!mc.player.isCreative() && (!mc.player.isSpectator())) {
 				TextureManager tm = mc.getTextureManager();
 				//Font font = new Font(new ResourceLocation("textures/gui/flowers.ttf"),);
@@ -76,11 +76,9 @@ public class ManageThirst extends Gui {
 			}
 		}
 		if(event.getType() == RenderGameOverlayEvent.ElementType.DEBUG){
-			drawString(event.getMatrixStack(),mc.font,  "ThirstLevel: "+ thirstdata.getThirstLevel(), 5, 5, Integer.parseInt("FFFFFF", 16));
-			drawString(event.getMatrixStack(),mc.font,  "Saturation: "+ thirstdata.getSaturationLevel(), 5, 20, Integer.parseInt("FFFFFF", 16));
-			drawString(event.getMatrixStack(),mc.font,  "Exhaustion: "+ thirstdata.getExhaustionLevel(), 5, 35, Integer.parseInt("FFFFFF", 16));
-			mc.font.drawShadow(event.getMatrixStack(),"ThirstLevel: "+ thirstdata.getThirstLevel(),20,50,Integer.parseInt("FFFFFF", 16));
-
+			drawString(event.getMatrixStack(),mc.font,  "ThirstLevel: "+ thirstdata.getThirstLevel(), 5, 220, Integer.parseInt("FFFFFF", 16));
+			drawString(event.getMatrixStack(),mc.font,  "Saturation: "+ thirstdata.getSaturationLevel(), 5, 230, Integer.parseInt("FFFFFF", 16));
+			drawString(event.getMatrixStack(),mc.font,  "Exhaustion: "+ thirstdata.getExhaustionLevel(), 5, 240, Integer.parseInt("FFFFFF", 16));
 		}
 	}
 
