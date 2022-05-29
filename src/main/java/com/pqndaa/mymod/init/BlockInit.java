@@ -57,8 +57,30 @@ public class BlockInit {
 			() -> new Block(BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.GRASS).strength(2.0F,8.0F)),
 			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
 
+	public static final RegistryObject<Block> GRAVEYARD_GRASS = register("graveyard_grass",
+			() -> new Block(BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.GRASS).strength(2.0F,8.0F)),
+			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
+
 
 	public static final RegistryObject<Block> REDWOOD_LEAVES = registerBlock("redwood_leaves",
+			() -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)) {
+				@Override
+				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+					return true;
+				}
+
+				@Override
+				public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+					return 60;
+				}
+
+				@Override
+				public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+					return 30;
+				}
+			});
+
+	public static final RegistryObject<Block> GRAVEYARD_LEAVES = registerBlock("graveyard_leaves",
 			() -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {

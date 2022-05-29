@@ -27,10 +27,11 @@ public class ModBiomes {
 
     public static final RegistryObject<Biome> LAVA_LAND = BIOMES.register("lava_land", ModBiomes::createLavaLand);
 
-
+    public static final RegistryObject<Biome> GRAVEYARD_LAND = BIOMES.register("graveyard_land", ModBiomes::createGraveyardLand);
 
     public static void generateBiomes(){
         addBiome(LAVA_LAND.get(),BiomeManager.BiomeType.DESERT,20,Type.HOT,Type.DEAD,Type.DRY);
+        addBiome(GRAVEYARD_LAND.get(),BiomeManager.BiomeType.COOL,20,Type.SWAMP,Type.FOREST);
     }
     private static void addBiome(Biome biome, BiomeManager.BiomeType type, int weight, BiomeDictionary.Type... types)
     {
@@ -67,6 +68,38 @@ public class ModBiomes {
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(0xe43f3f).waterFogColor(0x050533)
                         .fogColor(0xc0d8ff).skyColor(0x77adff)
+                        .build()).mobSpawnSettings(spawnSettings.build())
+                .generationSettings(generationSettings.build()).build();
+
+    }
+
+    private static Biome createGraveyardLand() {
+        MobSpawnSettings.Builder spawnSettings = new MobSpawnSettings.Builder();
+        BiomeDefaultFeatures.farmAnimals(spawnSettings);
+        BiomeDefaultFeatures.monsters(spawnSettings, 90, 5, 100);
+
+        BiomeGenerationSettings.Builder generationSettings = new BiomeGenerationSettings.Builder();
+        generationSettings.surfaceBuilder(ModSurfaceConfigs.GRAVEYARD_SURFACE_BUILDER);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(generationSettings);
+        BiomeDefaultFeatures.addDefaultFlowers(generationSettings);
+        BiomeDefaultFeatures.addDefaultLakes(generationSettings);
+        BiomeDefaultFeatures.addDefaultCarvers(generationSettings);
+        generationSettings.addFeature(GenerationStep.Decoration.LAKES, Features.LAKE_WATER);
+
+        BiomeDefaultFeatures.addDefaultOres(generationSettings);
+        BiomeDefaultFeatures.addDefaultSoftDisks(generationSettings);
+        BiomeDefaultFeatures.addDefaultSprings(generationSettings);
+        generationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,  Features.ACACIA
+                .decorated(Features.Decorators.HEIGHTMAP_WITH_TREE_THRESHOLD_SQUARED)
+                .decorated(FeatureDecorator.COUNT_EXTRA
+                        .configured(new FrequencyWithExtraChanceDecoratorConfiguration(
+                                2, 0.1f, 1))));
+
+        return (new Biome.BiomeBuilder()).precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.SWAMP)
+                .depth(0.120F).scale(0.13F).temperature(0.7F).downfall(0.9F)
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .waterColor(0x190725).waterFogColor(0x190725)
+                        .fogColor(0x282D35).skyColor(0x1A1D22)
                         .build()).mobSpawnSettings(spawnSettings.build())
                 .generationSettings(generationSettings.build()).build();
 

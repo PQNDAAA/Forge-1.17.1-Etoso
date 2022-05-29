@@ -23,7 +23,8 @@ public class TreeGeneration {
         ResourceKey<Biome> key = ResourceKey.create(Registry.BIOME_REGISTRY, event.getName());
         Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(key);
 
-        if(types.contains(BiomeDictionary.Type.DEAD)) {
+        if(types.contains(BiomeDictionary.Type.DEAD))
+        {
             List<Supplier<ConfiguredFeature<?, ?>>> base =
                     event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
 
@@ -38,6 +39,17 @@ public class TreeGeneration {
                     .decorated(FeatureDecorator.COUNT_EXTRA
                             .configured(new FrequencyWithExtraChanceDecoratorConfiguration(
                                     1, 0.1f, 1))));
+        }
+        if(types.contains(BiomeDictionary.Type.SWAMP))
+        {
+            List<Supplier<ConfiguredFeature<?, ?>>> base =
+                    event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION);
+
+            base.add(() -> ModConfiguredFeatures.GRAVEYARDWOOD
+                    .decorated(Features.Decorators.HEIGHTMAP_WITH_TREE_THRESHOLD_SQUARED)
+                    .decorated(FeatureDecorator.COUNT_EXTRA
+                            .configured(new FrequencyWithExtraChanceDecoratorConfiguration(
+                                    1, 0.3f, 1))));
         }
     }
     }

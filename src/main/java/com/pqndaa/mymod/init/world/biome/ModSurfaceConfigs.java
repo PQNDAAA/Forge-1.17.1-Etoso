@@ -18,6 +18,12 @@ public class ModSurfaceConfigs {
                     Blocks.DIRT.defaultBlockState(),
                     Blocks.SAND.defaultBlockState())));
 
+    public static final ConfiguredSurfaceBuilder<SurfaceBuilderBaseConfiguration> GRAVEYARD_SURFACE_BUILDER =
+            register("graveyard_surface", SurfaceBuilder.DEFAULT.configured(new SurfaceBuilderBaseConfiguration(
+                    BlockInit.GRAVEYARD_GRASS.get().defaultBlockState(),
+                    Blocks.DIRT.defaultBlockState(),
+                    Blocks.GRAVEL.defaultBlockState())));
+
 
     private static <T extends  SurfaceBuilderBaseConfiguration> ConfiguredSurfaceBuilder<T> register(String name,
                                                                                                      ConfiguredSurfaceBuilder<T>surfaceBuilder) {

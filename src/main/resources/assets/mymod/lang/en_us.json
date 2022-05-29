@@ -16,5 +16,8 @@
 	"block.mymod.exo_block": "Exo Block",
 	"block.mymod.plaxotium_block": "Plaxotium Block",
 	"block.mymod.tritium_block": "Tritium Block",
-	"block.mymod.burn_grass": "Burn Grass"
+	"block.mymod.burn_grass": "Burn Grass",
+	"block.mymod.graveyard_grass": "Graveyard Grass",
+	"block.mymod.redwood_leaves": "Redwood Leaves",
+	"block.mymod.graveyard.leaves": "Graveyard Leaves"
 }

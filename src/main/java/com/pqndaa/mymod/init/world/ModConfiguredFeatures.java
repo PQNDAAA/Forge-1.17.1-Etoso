@@ -21,7 +21,7 @@ public class ModConfiguredFeatures {
                     new TreeConfiguration.TreeConfigurationBuilder(
                             new SimpleStateProvider(Blocks.ACACIA_LOG.defaultBlockState()),
                             new StraightTrunkPlacer(5, 4, 3),
-                            new SimpleStateProvider(BlockInit.TRITIUM_BLOCK.get().defaultBlockState()),
+                            new SimpleStateProvider(BlockInit.REDWOOD_LEAVES.get().defaultBlockState()),
                             new SimpleStateProvider(BlockInit.PLAXOTIUM_BLOCK.get().defaultBlockState()),
                             new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 4),
                             new TwoLayersFeatureSize(1, 0, 2)).build()));
@@ -34,6 +34,16 @@ public class ModConfiguredFeatures {
                             new SimpleStateProvider(Blocks.OAK_LEAVES.defaultBlockState()),
                             new SimpleStateProvider(BlockInit.PLAXOTIUM_BLOCK.get().defaultBlockState()),
                             new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 4),
+                            new TwoLayersFeatureSize(1, 0, 2)).build()));
+
+    public static final ConfiguredFeature<?, ?> GRAVEYARDWOOD =
+            register("ebony", Feature.TREE.configured(
+                    new TreeConfiguration.TreeConfigurationBuilder(
+                            new SimpleStateProvider(Blocks.OAK_LOG.defaultBlockState()),
+                            new StraightTrunkPlacer(5, 4, 3),
+                            new SimpleStateProvider(BlockInit.GRAVEYARD_LEAVES.get().defaultBlockState()),
+                            new SimpleStateProvider(BlockInit.PLAXOTIUM_BLOCK.get().defaultBlockState()),
+                            new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 4),
                             new TwoLayersFeatureSize(1, 0, 2)).build()));
 
 
