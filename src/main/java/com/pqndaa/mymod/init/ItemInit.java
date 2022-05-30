@@ -3,7 +3,9 @@ package com.pqndaa.mymod.init;
 import com.google.common.base.Supplier;
 import com.pqndaa.mymod.MainMod;
 import com.pqndaa.mymod.init.customitems.Water_Bottle;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -37,6 +39,9 @@ public class ItemInit {
 
 	public static final RegistryObject<Item> WATER_BOTTLE = ITEMS.register("water_bottle", 
 			() -> new Water_Bottle(new Item.Properties().tab(MainMod.TAB).stacksTo(1),0,6));
+
+	public static final RegistryObject<Item> BACKPACK = ITEMS.register("backpack",
+			() -> new Item(new Item.Properties().tab(MainMod.TAB).stacksTo(1)));
    
 	
 	private static <T extends Item> RegistryObject<T> register(final String name, final Supplier<T> item) {
