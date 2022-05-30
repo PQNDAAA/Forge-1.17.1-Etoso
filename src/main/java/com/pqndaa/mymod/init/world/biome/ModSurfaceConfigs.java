@@ -15,13 +15,13 @@ public class ModSurfaceConfigs {
     public static final ConfiguredSurfaceBuilder<SurfaceBuilderBaseConfiguration> LAVA_SURFACE_BUILDER =
             register("lava_surface", SurfaceBuilder.DEFAULT.configured(new SurfaceBuilderBaseConfiguration(
                     BlockInit.BURN_GRASS.get().defaultBlockState(),
-                    Blocks.DIRT.defaultBlockState(),
+                    BlockInit.BURN_GRASS.get().defaultBlockState(),
                     Blocks.SAND.defaultBlockState())));
 
     public static final ConfiguredSurfaceBuilder<SurfaceBuilderBaseConfiguration> GRAVEYARD_SURFACE_BUILDER =
             register("graveyard_surface", SurfaceBuilder.DEFAULT.configured(new SurfaceBuilderBaseConfiguration(
                     BlockInit.GRAVEYARD_GRASS.get().defaultBlockState(),
-                    Blocks.DIRT.defaultBlockState(),
+                    BlockInit.GRAVEYARD_GRASS.get().defaultBlockState(),
                     Blocks.GRAVEL.defaultBlockState())));
 
 

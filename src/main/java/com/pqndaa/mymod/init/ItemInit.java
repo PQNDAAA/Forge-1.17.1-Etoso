@@ -2,6 +2,7 @@ package com.pqndaa.mymod.init;
 
 import com.google.common.base.Supplier;
 import com.pqndaa.mymod.MainMod;
+import com.pqndaa.mymod.init.customitems.Compass;
 import com.pqndaa.mymod.init.customitems.Water_Bottle;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -42,6 +43,9 @@ public class ItemInit {
 
 	public static final RegistryObject<Item> BACKPACK = ITEMS.register("backpack",
 			() -> new Item(new Item.Properties().tab(MainMod.TAB).stacksTo(1)));
+
+	public static final RegistryObject<Item> COMPASS = ITEMS.register("compass",
+			() -> new Compass(new Item.Properties().tab(MainMod.TAB).stacksTo(1)));
    
 	
 	private static <T extends Item> RegistryObject<T> register(final String name, final Supplier<T> item) {

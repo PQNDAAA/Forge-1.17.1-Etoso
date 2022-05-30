@@ -33,12 +33,6 @@ public class TreeGeneration {
                     .decorated(FeatureDecorator.COUNT_EXTRA
                             .configured(new FrequencyWithExtraChanceDecoratorConfiguration(
                                     1, 0.1f, 1))));
-
-            base.add(() -> ModConfiguredFeatures.GREENWOOD
-                    .decorated(Features.Decorators.HEIGHTMAP_WITH_TREE_THRESHOLD_SQUARED)
-                    .decorated(FeatureDecorator.COUNT_EXTRA
-                            .configured(new FrequencyWithExtraChanceDecoratorConfiguration(
-                                    1, 0.1f, 1))));
         }
         if(types.contains(BiomeDictionary.Type.SWAMP))
         {
