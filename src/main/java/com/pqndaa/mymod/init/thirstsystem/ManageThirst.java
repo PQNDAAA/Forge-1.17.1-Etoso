@@ -79,6 +79,8 @@ public class ManageThirst extends Gui {
 			drawString(event.getMatrixStack(),mc.font,  "ThirstLevel: "+ thirstdata.getThirstLevel(), 5, 220, Integer.parseInt("FFFFFF", 16));
 			drawString(event.getMatrixStack(),mc.font,  "Saturation: "+ thirstdata.getSaturationLevel(), 5, 230, Integer.parseInt("FFFFFF", 16));
 			drawString(event.getMatrixStack(),mc.font,  "Exhaustion: "+ thirstdata.getExhaustionLevel(), 5, 240, Integer.parseInt("FFFFFF", 16));
+			drawString(event.getMatrixStack(),mc.font,  "Sips remaining: "+ Water_Bottle.Sips+"/"+Water_Bottle.MaxSips, 5, 250, Integer.parseInt("FFFFFF", 16));
+
 		}
 	}
 

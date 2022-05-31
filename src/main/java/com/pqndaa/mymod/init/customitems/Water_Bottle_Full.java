@@ -1,45 +1,29 @@
 package com.pqndaa.mymod.init.customitems;
 
-import com.pqndaa.mymod.init.thirstsystem.ThirstData;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 
 import java.util.List;
 
-public class Water_Bottle extends Item {
-
-    public static int Sips;
-    public static int MaxSips;
-
-    protected ThirstData thirstdata = new ThirstData();
-
-    private static Minecraft mc = Minecraft.getInstance();
-
-    public Water_Bottle(Properties properties, int Sips, int MaxSips) {
+public class Water_Bottle_Full extends PotionItem {
+    public Water_Bottle_Full(Properties properties) {
         super(properties);
-        this.Sips = Sips;
-        this.MaxSips = MaxSips;
     }
 
     public InteractionResultHolder<ItemStack> use(Level level, Player p, InteractionHand interactionhand) {
@@ -64,28 +48,15 @@ public class Water_Bottle extends Item {
                     if (!level.mayInteract(p, blockpos)) {
                         return InteractionResultHolder.success(itemstack);
                     }
-                        if (level.getFluidState(blockpos).is(FluidTags.WATER) && this.Sips <= this.MaxSips) {
-                            level.playSound(p, p.getX(), p.getY(), p.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL, 1.0F, 1.0F);
-                            ++this.Sips;
-                            System.out.println(this.Sips + "/" + this.MaxSips);
-                            return InteractionResultHolder.sidedSuccess(this.turnBottleIntoItem(itemstack, p, PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)), level.isClientSide());
+                  //  if (level.getFluidState(blockpos).is(FluidTags.WATER) && this.Sips <= this.MaxSips) {
+                        level.playSound(p, p.getX(), p.getY(), p.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL, 1.0F, 1.0F);
+                     //   ++this.Sips;
+                     //   System.out.println(this.Sips + "/" + this.MaxSips);
+                     //   return InteractionResultHolder.sidedSuccess(this.turnBottleIntoItem(itemstack, p, PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)), level.isClientSide());
 
-                        }
                     }
+                }
                 return InteractionResultHolder.success(itemstack);
             }
         }
     }
-
-    protected ItemStack turnBottleIntoItem(ItemStack p_40652_, Player p_40653_, ItemStack p_40654_) {
-        p_40653_.awardStat(Stats.ITEM_USED.get(this));
-        return ItemUtils.createFilledResult(p_40652_, p_40653_, p_40654_);
-    }
-
-    public int getMaxSips(){
-        return this.MaxSips;
-    }
-    public int getSips(){
-        return this.Sips;
-    }
-}

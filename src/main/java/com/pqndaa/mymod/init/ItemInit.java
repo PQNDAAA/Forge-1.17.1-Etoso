@@ -6,6 +6,7 @@ import com.pqndaa.mymod.init.customitems.Compass;
 import com.pqndaa.mymod.init.customitems.Water_Bottle;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -14,6 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ItemInit {
 
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MainMod.MOD_ID);
+	public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, MainMod.MOD_ID);
 
 	public static final RegistryObject<Item> EXO_INGOT = register("exo_ingot",
 			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
@@ -38,8 +40,17 @@ public class ItemInit {
 	public static final RegistryObject<AxeItem> EXO_AXE = ITEMS.register("exo_axe",
 			() -> new AxeItem(ModTiers.EXO,6,-3.1f,new Item.Properties().tab(MainMod.TAB)));
 
+	public static final RegistryObject<SwordItem> TRITIUM_SWORD = ITEMS.register("tritium_sword",
+			() -> new SwordItem(ModTiers.EXO,4,-2.3f,new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<PickaxeItem> TRITIUM_PICKAXE = ITEMS.register("tritium_pickaxe",
+			() -> new PickaxeItem(ModTiers.EXO,2,-2.8f,new Item.Properties().tab(MainMod.TAB).durability(1500)));
+
+	public static final RegistryObject<AxeItem> TRITIUM_AXE = ITEMS.register("tritium_axe",
+			() -> new AxeItem(ModTiers.EXO,6,-3.1f,new Item.Properties().tab(MainMod.TAB)));
+
 	public static final RegistryObject<Item> WATER_BOTTLE = ITEMS.register("water_bottle", 
-			() -> new Water_Bottle(new Item.Properties().tab(MainMod.TAB).stacksTo(1),0,6));
+			() -> new Water_Bottle(new Item.Properties().tab(MainMod.TAB).stacksTo(1),0,7));
 
 	public static final RegistryObject<Item> BACKPACK = ITEMS.register("backpack",
 			() -> new Item(new Item.Properties().tab(MainMod.TAB).stacksTo(1)));

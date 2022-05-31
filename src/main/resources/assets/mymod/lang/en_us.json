@@ -9,6 +9,9 @@
 	"item.mymod.exo_sword": "Exo Sword",
 	"item.mymod.exo_pickaxe": "Exo Pickaxe",
 	"item.mymod.exo_axe": "Exo Axe",
+	"item.mymod.tritium_sword": "Tritium Sword",
+	"item.mymod.tritium_pickaxe": "Tritium Pickaxe",
+	"item.mymod.tritium_axe": "Tritium Axe",
 	"block.mymod.exo_ore": "Exo Ore",
 	"block.mymod.plaxotium_ore": "Plaxotium Ore",
 	"block.mymod.tritium_ore": "Tritium Ore",
@@ -19,5 +22,5 @@
 	"block.mymod.burn_grass": "Burn Grass",
 	"block.mymod.graveyard_grass": "Graveyard Grass",
 	"block.mymod.redwood_leaves": "Redwood Leaves",
-	"block.mymod.graveyard.leaves": "Graveyard Leaves"
+	"block.mymod.graveyard_leaves": "Graveyard Leaves"
 }

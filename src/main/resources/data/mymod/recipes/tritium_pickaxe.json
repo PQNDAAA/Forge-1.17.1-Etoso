@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mmm",
+    " / ",
+    " / "
+  ],
+  "key": {
+    "m": {
+      "item": "mymod:tritium_ingot"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mymod:tritium_pickaxe",
+    "count": 1
+  }
+}
