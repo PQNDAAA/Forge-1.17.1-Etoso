@@ -1,5 +1,6 @@
 package com.pqndaa.mymod.init.customitems;
 
+import com.pqndaa.mymod.init.ItemInit;
 import com.pqndaa.mymod.init.thirstsystem.ThirstData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -64,11 +65,10 @@ public class Water_Bottle extends Item {
                     if (!level.mayInteract(p, blockpos)) {
                         return InteractionResultHolder.success(itemstack);
                     }
-                        if (level.getFluidState(blockpos).is(FluidTags.WATER) && this.Sips <= this.MaxSips) {
+                        if (level.getFluidState(blockpos).is(FluidTags.WATER)) {
                             level.playSound(p, p.getX(), p.getY(), p.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL, 1.0F, 1.0F);
-                            ++this.Sips;
-                            System.out.println(this.Sips + "/" + this.MaxSips);
-                            return InteractionResultHolder.sidedSuccess(this.turnBottleIntoItem(itemstack, p, PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)), level.isClientSide());
+                            p.setItemInHand(InteractionHand.MAIN_HAND,new ItemStack(ItemInit.WATER_BOTTLE_FULL.get()));
+                            return InteractionResultHolder.success(itemstack);
 
                         }
                     }
@@ -77,10 +77,6 @@ public class Water_Bottle extends Item {
         }
     }
 
-    protected ItemStack turnBottleIntoItem(ItemStack p_40652_, Player p_40653_, ItemStack p_40654_) {
-        p_40653_.awardStat(Stats.ITEM_USED.get(this));
-        return ItemUtils.createFilledResult(p_40652_, p_40653_, p_40654_);
-    }
 
     public int getMaxSips(){
         return this.MaxSips;

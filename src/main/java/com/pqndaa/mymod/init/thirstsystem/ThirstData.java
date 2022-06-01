@@ -4,20 +4,19 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodData;
 import net.minecraft.world.level.GameRules;
 
 public class ThirstData {
 
     private int thirstLevel = 20;
     private float saturationLevel;
-    private int test = 20;
     private int tickTimer;
     private float exhaustionLevel;
     private int lastThirstLevel;
     private Minecraft mc = Minecraft.getInstance();
-
     public ThirstData() {
-        saturationLevel = 5.0F;
+        saturationLevel = 3.0F;
     }
 
     @SuppressWarnings("static-access")
@@ -26,14 +25,22 @@ public class ThirstData {
         this.lastThirstLevel = this.thirstLevel;
 
         if (!p.isCreative()) {
-            addExhaustion(0.0003F);
+
 
             if (p.isSprinting()) {
-                addExhaustion(0.001F);
+                addExhaustion(0.002F);
+            } else {
+                addExhaustion(0.0003F);
+            }
+            if(p.isCrouching()){
+                addExhaustion(0.0001F);
+            }
+            if(p.isSwimming()){
+                addExhaustion(0.0002F);
             }
 
-            if (this.exhaustionLevel > 4.0F) {
-                this.exhaustionLevel -= 4.0F;
+            if (this.exhaustionLevel > 3.0F) {
+                this.exhaustionLevel -= 3.0F;
                 if (this.saturationLevel > 0.0F) {
                     this.saturationLevel = Math.max(this.saturationLevel - 1.0F, 0.0F);
                 } else if (difficulty != difficulty.PEACEFUL) {

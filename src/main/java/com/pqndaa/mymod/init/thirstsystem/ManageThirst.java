@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.pqndaa.mymod.MainMod;
 import com.pqndaa.mymod.init.ItemInit;
 import com.pqndaa.mymod.init.customitems.Water_Bottle;
+import com.pqndaa.mymod.init.customitems.Water_Bottle_Full;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
@@ -15,7 +16,9 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
@@ -25,12 +28,15 @@ import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.event.TickEvent;
@@ -79,21 +85,21 @@ public class ManageThirst extends Gui {
 			drawString(event.getMatrixStack(),mc.font,  "ThirstLevel: "+ thirstdata.getThirstLevel(), 5, 220, Integer.parseInt("FFFFFF", 16));
 			drawString(event.getMatrixStack(),mc.font,  "Saturation: "+ thirstdata.getSaturationLevel(), 5, 230, Integer.parseInt("FFFFFF", 16));
 			drawString(event.getMatrixStack(),mc.font,  "Exhaustion: "+ thirstdata.getExhaustionLevel(), 5, 240, Integer.parseInt("FFFFFF", 16));
-			drawString(event.getMatrixStack(),mc.font,  "Sips remaining: "+ Water_Bottle.Sips+"/"+Water_Bottle.MaxSips, 5, 250, Integer.parseInt("FFFFFF", 16));
-
 		}
 	}
 
 	@SubscribeEvent
 	public void rightclickItem(PlayerInteractEvent.RightClickBlock event) {
-		if (event.getItemStack().getItem() instanceof Water_Bottle) {
-			if(thirstdata.needsThirst() && Water_Bottle.Sips > 0) {
-				--Water_Bottle.Sips;
-				System.out.println(Water_Bottle.Sips + "/" + Water_Bottle.MaxSips + " " + thirstdata.getThirstLevel());
+
+		final BlockPos blockpos = new BlockPos(event.getHitVec().getBlockPos());
+		final BlockState state = event.getWorld().getBlockState(blockpos);
+		if (event.getItemStack().getItem() instanceof Water_Bottle_Full) {
+			if(thirstdata.needsThirst()) {
 				thirstdata.setThirstLevel(thirstdata.getThirstLevel() + 1);
 				thirstdata.setSaturationLevel(thirstdata.getSaturationLevel() + 4);
 				event.getWorld().playSound((Player) null, event.getPlayer().getX(), event.getPlayer().getY(), event.getPlayer().getZ(),
 						SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.NEUTRAL, 1.0F, 1.0F);
+				event.getPlayer().setItemInHand(InteractionHand.MAIN_HAND,new ItemStack(ItemInit.WATER_BOTTLE.get()));
 				}
 			}
 
@@ -104,12 +110,6 @@ public class ManageThirst extends Gui {
 		this.thirstdata.tick(event.player);
 	}
 
-
-	@SubscribeEvent
-	public void onRightClick(PlayerInteractEvent.LeftClickBlock event){
-
-
-	}
 }
 
 

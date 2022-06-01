@@ -5,6 +5,7 @@ import com.pqndaa.mymod.MainMod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -62,7 +63,7 @@ public class BlockInit {
 			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
 
 
-	public static final RegistryObject<Block> REDWOOD_LEAVES = registerBlock("redwood_leaves",
+	public static final RegistryObject<Block> REDWOOD_LEAVES = registerBlockLeaves("redwood_leaves",
 			() -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
@@ -78,9 +79,10 @@ public class BlockInit {
 				public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
 					return 30;
 				}
-			});
+			}, MainMod.TAB);
 
-	public static final RegistryObject<Block> GRAVEYARD_LEAVES = registerBlock("graveyard_leaves",
+
+	public static final RegistryObject<Block> GRAVEYARD_LEAVES = registerBlockLeaves("graveyard_leaves",
 			() -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
@@ -96,11 +98,23 @@ public class BlockInit {
 				public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
 					return 30;
 				}
-			});
+			}, MainMod.TAB);
 
 	private static <T extends Block> RegistryObject<T> registerBlock(final String name,
 			final Supplier<? extends T> block) {
 		return BLOCKS.register(name, block);
+	}
+
+	private static <T extends Block> RegistryObject<T> registerBlockLeaves(String name, Supplier<T> block, CreativeModeTab tab) {
+		RegistryObject<T> toReturn = BLOCKS.register(name, block);
+		registerBlockItem(name, toReturn, tab);
+		return toReturn;
+	}
+
+	private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block,
+																			CreativeModeTab tab) {
+		return ItemInit.ITEMS.register(name, () -> new BlockItem(block.get(),
+				new Item.Properties().tab(tab)));
 	}
 
 	private static <T extends Block> RegistryObject<T> register(final String name, final Supplier<? extends T> block,

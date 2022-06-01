@@ -4,6 +4,9 @@ import com.google.common.base.Supplier;
 import com.pqndaa.mymod.MainMod;
 import com.pqndaa.mymod.init.customitems.Compass;
 import com.pqndaa.mymod.init.customitems.Water_Bottle;
+import com.pqndaa.mymod.init.customitems.Water_Bottle_Full;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.data.Main;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.Potion;
@@ -51,6 +54,9 @@ public class ItemInit {
 
 	public static final RegistryObject<Item> WATER_BOTTLE = ITEMS.register("water_bottle", 
 			() -> new Water_Bottle(new Item.Properties().tab(MainMod.TAB).stacksTo(1),0,7));
+
+	public static final RegistryObject<Item> WATER_BOTTLE_FULL = ITEMS.register("water_bottle_full",
+			() -> new Water_Bottle_Full(new Item.Properties().tab(MainMod.TAB).stacksTo(1)));
 
 	public static final RegistryObject<Item> BACKPACK = ITEMS.register("backpack",
 			() -> new Item(new Item.Properties().tab(MainMod.TAB).stacksTo(1)));
