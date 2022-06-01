@@ -35,26 +35,33 @@ public class ItemInit {
 			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
 	
 	public static final RegistryObject<SwordItem> EXO_SWORD = ITEMS.register("exo_sword", 
-			() -> new SwordItem(ModTiers.EXO,4,-2.3f,new Item.Properties().tab(MainMod.TAB)));
+			() -> new SwordItem(ModTiers.EXO,3,-2.3f,new Item.Properties().tab(MainMod.TAB)));
 
 	public static final RegistryObject<PickaxeItem> EXO_PICKAXE = ITEMS.register("exo_pickaxe",
-			() -> new PickaxeItem(ModTiers.EXO,2,-2.8f,new Item.Properties().tab(MainMod.TAB).durability(1500)));
+			() -> new PickaxeItem(ModTiers.EXO,1,-2.8f,new Item.Properties().tab(MainMod.TAB).durability(1500)));
 
 	public static final RegistryObject<AxeItem> EXO_AXE = ITEMS.register("exo_axe",
-			() -> new AxeItem(ModTiers.EXO,6,-3.1f,new Item.Properties().tab(MainMod.TAB)));
+			() -> new AxeItem(ModTiers.EXO,5,-3.1f,new Item.Properties().tab(MainMod.TAB)));
 
 	public static final RegistryObject<SwordItem> TRITIUM_SWORD = ITEMS.register("tritium_sword",
-			() -> new SwordItem(ModTiers.EXO,4,-2.3f,new Item.Properties().tab(MainMod.TAB)));
+			() -> new SwordItem(ModTiers.TRITIUM,7,-2.2f,new Item.Properties().tab(MainMod.TAB)));
 
 	public static final RegistryObject<PickaxeItem> TRITIUM_PICKAXE = ITEMS.register("tritium_pickaxe",
-			() -> new PickaxeItem(ModTiers.EXO,2,-2.8f,new Item.Properties().tab(MainMod.TAB).durability(1500)));
+			() -> new PickaxeItem(ModTiers.TRITIUM,4,-2.8f,new Item.Properties().tab(MainMod.TAB).durability(1500)));
 
 	public static final RegistryObject<AxeItem> TRITIUM_AXE = ITEMS.register("tritium_axe",
-			() -> new AxeItem(ModTiers.EXO,6,-3.1f,new Item.Properties().tab(MainMod.TAB)));
+			() -> new AxeItem(ModTiers.TRITIUM,7,-2.8f,new Item.Properties().tab(MainMod.TAB)));
 
+	public static final RegistryObject<SwordItem> PLAXOTIUM_SWORD = ITEMS.register("plaxotium_sword",
+			() -> new SwordItem(ModTiers.PLAXOTIUM,5,-2.4f,new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<PickaxeItem> PLAXOTIUM_PICKAXE = ITEMS.register("plaxotium_pickaxe",
+			() -> new PickaxeItem(ModTiers.PLAXOTIUM,3,-2.8f,new Item.Properties().tab(MainMod.TAB).durability(1500)));
+
+	public static final RegistryObject<AxeItem> PLAXOTIUM_AXE = ITEMS.register("plaxotium_axe",
+			() -> new AxeItem(ModTiers.PLAXOTIUM,7,-3.0f,new Item.Properties().tab(MainMod.TAB)));
 	public static final RegistryObject<Item> WATER_BOTTLE = ITEMS.register("water_bottle", 
 			() -> new Water_Bottle(new Item.Properties().tab(MainMod.TAB).stacksTo(1),0,7));
-
 	public static final RegistryObject<Item> WATER_BOTTLE_FULL = ITEMS.register("water_bottle_full",
 			() -> new Water_Bottle_Full(new Item.Properties().tab(MainMod.TAB).stacksTo(1)));
 
