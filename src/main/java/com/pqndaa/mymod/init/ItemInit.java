@@ -7,6 +7,7 @@ import com.pqndaa.mymod.init.customitems.Water_Bottle;
 import com.pqndaa.mymod.init.customitems.Water_Bottle_Full;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.data.Main;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.Potion;
@@ -22,10 +23,8 @@ public class ItemInit {
 
 	public static final RegistryObject<Item> EXO_INGOT = register("exo_ingot",
 			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
-
 	public static final RegistryObject<Item> TRITIUM_INGOT = register("tritium_ingot",
 			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
-
 	public static final RegistryObject<Item> PLAXOTIUM_INGOT = register("plaxotium_ingot",
 			() -> new Item(new Item.Properties().tab(MainMod.TAB)));
 	public static final RegistryObject<Item> EXAMPLE_ITEM = register("example_item",
@@ -56,10 +55,58 @@ public class ItemInit {
 			() -> new SwordItem(ModTiers.PLAXOTIUM,5,-2.4f,new Item.Properties().tab(MainMod.TAB)));
 
 	public static final RegistryObject<PickaxeItem> PLAXOTIUM_PICKAXE = ITEMS.register("plaxotium_pickaxe",
-			() -> new PickaxeItem(ModTiers.PLAXOTIUM,3,-2.8f,new Item.Properties().tab(MainMod.TAB).durability(1500)));
+			() -> new PickaxeItem(ModTiers.PLAXOTIUM,2,-2.8f,new Item.Properties().tab(MainMod.TAB).durability(1500)));
 
 	public static final RegistryObject<AxeItem> PLAXOTIUM_AXE = ITEMS.register("plaxotium_axe",
-			() -> new AxeItem(ModTiers.PLAXOTIUM,7,-3.0f,new Item.Properties().tab(MainMod.TAB)));
+			() -> new AxeItem(ModTiers.PLAXOTIUM,6,-3.0f,new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> EXO_BOOTS = ITEMS.register("exo_boots",
+			() -> new ArmorItem(ModArmorMaterial.EXO, EquipmentSlot.FEET,
+					new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> EXO_LEGGINGS = ITEMS.register("exo_leggings",
+			() -> new ArmorItem(ModArmorMaterial.EXO, EquipmentSlot.LEGS,
+					new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> EXO_CHESTPLATE = ITEMS.register("exo_chestplate",
+			() -> new ArmorItem(ModArmorMaterial.EXO, EquipmentSlot.CHEST,
+					new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> EXO_HELMET = ITEMS.register("exo_helmet",
+			() -> new ArmorItem(ModArmorMaterial.EXO, EquipmentSlot.HEAD,
+					new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> TRITIUM_BOOTS = ITEMS.register("tritium_boots",
+			() -> new ArmorItem(ModArmorMaterial.TRITIUM, EquipmentSlot.FEET,
+					new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> TRITIUM_LEGGINGS = ITEMS.register("tritium_leggings",
+			() -> new ArmorItem(ModArmorMaterial.TRITIUM, EquipmentSlot.LEGS,
+					new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> TRITIUM_CHESTPLATE = ITEMS.register("tritium_chestplate",
+			() -> new ArmorItem(ModArmorMaterial.TRITIUM, EquipmentSlot.CHEST,
+					new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> TRITIUM_HELMET = ITEMS.register("tritium_helmet",
+			() -> new ArmorItem(ModArmorMaterial.TRITIUM, EquipmentSlot.HEAD,
+					new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> PLAXOTIUM_BOOTS = ITEMS.register("plaxotium_boots",
+			() -> new ArmorItem(ModArmorMaterial.PLAXOTIUM, EquipmentSlot.FEET,
+					new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> PLAXOTIUM_LEGGINGS = ITEMS.register("plaxotium_leggings",
+			() -> new ArmorItem(ModArmorMaterial.PLAXOTIUM, EquipmentSlot.LEGS,
+					new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> PLAXOTIUM_CHESTPLATE = ITEMS.register("plaxotium_chestplate",
+			() -> new ArmorItem(ModArmorMaterial.PLAXOTIUM, EquipmentSlot.CHEST,
+					new Item.Properties().tab(MainMod.TAB)));
+
+	public static final RegistryObject<Item> PLAXOTIUM_HELMET = ITEMS.register("plaxotium_helmet",
+			() -> new ArmorItem(ModArmorMaterial.PLAXOTIUM, EquipmentSlot.HEAD,
+					new Item.Properties().tab(MainMod.TAB)));
 	public static final RegistryObject<Item> WATER_BOTTLE = ITEMS.register("water_bottle", 
 			() -> new Water_Bottle(new Item.Properties().tab(MainMod.TAB).stacksTo(1),0,7));
 	public static final RegistryObject<Item> WATER_BOTTLE_FULL = ITEMS.register("water_bottle_full",
