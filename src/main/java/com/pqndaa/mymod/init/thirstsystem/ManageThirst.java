@@ -100,7 +100,7 @@ public class ManageThirst extends Gui {
 	}
 
 	@SubscribeEvent
-	public void rightclickItem(PlayerInteractEvent.RightClickBlock event) {
+	public void rightclickBlock(PlayerInteractEvent.RightClickBlock event) {
 
 		final BlockPos blockpos = new BlockPos(event.getHitVec().getBlockPos());
 		final BlockState state = event.getWorld().getBlockState(blockpos);
@@ -113,8 +113,8 @@ public class ManageThirst extends Gui {
 				event.getPlayer().setItemInHand(InteractionHand.MAIN_HAND,new ItemStack(ItemInit.WATER_BOTTLE.get()));
 				}
 			}
-
 		}
+
 
 	@SubscribeEvent
 	public void Tick(TickEvent.PlayerTickEvent event) {
