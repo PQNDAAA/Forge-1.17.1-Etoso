@@ -10,6 +10,7 @@ import com.pqndaa.mymod.init.customitems.Water_Bottle_Full;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.TextComponent;
@@ -73,12 +74,22 @@ public class ManageThirst extends Gui {
 			if (!mc.player.isCreative() && (!mc.player.isSpectator())) {
 				TextureManager tm = mc.getTextureManager();
 				//Font font = new Font(new ResourceLocation("textures/gui/flowers.ttf"),);
+				RenderSystem.disableDepthTest();
+				RenderSystem.depthMask(false);
+				RenderSystem.enableBlend();
+				RenderSystem.setShader(GameRenderer::getPositionTexShader);
 				RenderSystem.setShaderTexture(0, bar);
+
+				int w = event.getWindow().getGuiScaledWidth();
+				int h = event.getWindow().getGuiScaledHeight();
+				int posX = w / 2;
+				int posY = h / 2;
 				float oneUnit = (float) bar_width / 20;
 				int currentWidth = (int) (oneUnit * this.thirstdata.getThirstLevel());
+
 				//mc.player.sendMessage(new TextComponent("Waterlevel: " + this.thirstdata.getThirstLevel()), mc.player.getUUID());
-				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), 240, 221, 0, 0, tex_width, tex_height, 10);
-				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), 240, 221, 1, tex_height, currentWidth, bar_height, 10);
+				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), posX + 96, posY + 110, 0, 0, tex_width, tex_height, 10);
+				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), posX + 96, posY + 110, 1, tex_height, currentWidth, bar_height, 10);
 			}
 		}
 		if(event.getType() == RenderGameOverlayEvent.ElementType.DEBUG){

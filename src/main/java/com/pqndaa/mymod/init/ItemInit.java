@@ -107,6 +107,7 @@ public class ItemInit {
 	public static final RegistryObject<Item> PLAXOTIUM_HELMET = ITEMS.register("plaxotium_helmet",
 			() -> new ArmorItem(ModArmorMaterial.PLAXOTIUM, EquipmentSlot.HEAD,
 					new Item.Properties().tab(MainMod.TAB)));
+
 	public static final RegistryObject<Item> WATER_BOTTLE = ITEMS.register("water_bottle", 
 			() -> new Water_Bottle(new Item.Properties().tab(MainMod.TAB).stacksTo(1),0,7));
 	public static final RegistryObject<Item> WATER_BOTTLE_FULL = ITEMS.register("water_bottle_full",
