@@ -2,7 +2,7 @@ modLoader="javafml"
 loaderVersion="[37,)"
 license="PQNDAA"
 [[mods]] 
-modId="Etoso"
+modId="mymod"
 version="${file.jarVersion}" #mandatory
 displayName="Etoso"
 logoFile="examplemod.png" #optional
