@@ -27,34 +27,42 @@ public class Backpack extends Item{
         super(properties);
     }
 
-    public InteractionResultHolder<ItemStack> use(Level level, Player p, InteractionHand interactionhand) {
-        InteractionResultHolder<ItemStack> ar = super.use(level,p, interactionhand);
+
+    @Override
+    public int getUseDuration(ItemStack itemstack) {
+        return 0;
+    }
+
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+        InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
         ItemStack itemstack = ar.getObject();
-        double x = p.getX();
-        double y = p.getY();
-        double z = p.getZ();
-
-
-        if(p instanceof ServerPlayer serverPlayer){
+        double x = entity.getX();
+        double y = entity.getY();
+        double z = entity.getZ();
+        if (entity instanceof ServerPlayer serverPlayer) {
             NetworkHooks.openGui(serverPlayer, new MenuProvider() {
                 @Override
                 public Component getDisplayName() {
                     return new TextComponent("Backpack");
                 }
+
                 @Override
-                public AbstractContainerMenu createMenu(int id, Inventory inv, Player p) {
-                    FriendlyByteBuf fbb = new FriendlyByteBuf(Unpooled.buffer());
-                    fbb.writeBlockPos(p.blockPosition());
-                    fbb.writeByte(interactionhand == InteractionHand.MAIN_HAND ? 0 : 1);
-                    return new BackpackMenu(id, inv, fbb);
+                public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+                    FriendlyByteBuf packetBuffer = new FriendlyByteBuf(Unpooled.buffer());
+                    packetBuffer.writeBlockPos(entity.blockPosition());
+                    packetBuffer.writeByte(hand == InteractionHand.MAIN_HAND ? 0 : 1);
+                    return new BackpackMenu(id, inventory, packetBuffer);
                 }
-            },fbb -> {
-                fbb.writeBlockPos(p.blockPosition());
-                fbb.writeByte(interactionhand == InteractionHand.MAIN_HAND ? 0 : 1);
+            }, buf -> {
+                buf.writeBlockPos(entity.blockPosition());
+                buf.writeByte(hand == InteractionHand.MAIN_HAND ? 0 : 1);
             });
         }
         return ar;
     }
+
 
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag compound) {

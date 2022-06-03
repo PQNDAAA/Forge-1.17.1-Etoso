@@ -31,7 +31,7 @@ public class BackpackScreen extends AbstractContainerScreen<BackpackMenu> {
         this.imageHeight = 179;
     }
 
-    private static final ResourceLocation texture = new ResourceLocation(MainMod.MOD_ID, "textures/gui/thirst_info.png");
+    private static final ResourceLocation texture = new ResourceLocation(MainMod.MOD_ID, "textures/gui/backpack.png");
 
     @Override
     public void render(PoseStack ms, int mouseX, int mouseY, float partialTicks) {

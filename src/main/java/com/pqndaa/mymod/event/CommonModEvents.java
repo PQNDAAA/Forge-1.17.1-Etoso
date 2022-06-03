@@ -1,6 +1,7 @@
 package com.pqndaa.mymod.event;
 
 import com.pqndaa.mymod.init.MenuInit;
+import com.pqndaa.mymod.init.customitems.chest.BackpackScreen;
 import com.pqndaa.mymod.init.thirstsystem.ThirstInfoMenu;
 import com.pqndaa.mymod.init.thirstsystem.ThirstInfoScreen;
 import com.pqndaa.mymod.init.world.biome.ModBiomes;
@@ -30,6 +31,7 @@ public class CommonModEvents {
 	public static void clientLoad(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
 			MenuScreens.register(MenuInit.THIRST_INFO, ThirstInfoScreen::new);
+			MenuScreens.register(MenuInit.BACKPACK, BackpackScreen::new);
 		});
 	}
 

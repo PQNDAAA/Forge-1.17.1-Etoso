@@ -47,15 +47,14 @@ public class BackpackMenu  extends AbstractContainerMenu implements Supplier<Map
             if (fbb.readableBytes() == 1) {
                 byte hand = fbb.readByte();
                 ItemStack itemstack;
-                if (hand == 0) {
+                if (hand == 0)
                     itemstack = this.p.getMainHandItem();
-                } else {
+                else
                     itemstack = this.p.getOffhandItem();
                     itemstack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
                         this.internal = capability;
                         this.bound = true;
                     });
-                }
                 } else if (fbb.readableBytes() > 1) {
                     fbb.readByte(); // drop padding
                     Entity entity = level.getEntity(fbb.readVarInt());
@@ -192,33 +191,33 @@ public class BackpackMenu  extends AbstractContainerMenu implements Supplier<Map
     }
 
     @Override
-    protected boolean moveItemStackTo(ItemStack p_38904_, int p_38905_, int p_38906_, boolean p_38907_) {
+    protected boolean moveItemStackTo(ItemStack itemStack, int p_38905_, int index, boolean p_38907_) {
         boolean flag = false;
         int i = p_38905_;
         if (p_38907_) {
-            i = p_38906_ - 1;
+            i = index - 1;
         }
-        if (p_38904_.isStackable()) {
-            while (!p_38904_.isEmpty()) {
+        if (itemStack.isStackable()) {
+            while (!itemStack.isEmpty()) {
                 if (p_38907_) {
                     if (i < p_38905_) {
                         break;
                     }
-                } else if (i >= p_38906_) {
+                } else if (i >= index) {
                     break;
                 }
                 Slot slot = this.slots.get(i);
                 ItemStack itemstack = slot.getItem();
-                if (slot.mayPlace(itemstack) && !itemstack.isEmpty() && ItemStack.isSameItemSameTags(p_38904_, itemstack)) {
-                    int j = itemstack.getCount() + p_38904_.getCount();
-                    int maxSize = Math.min(slot.getMaxStackSize(), p_38904_.getMaxStackSize());
+                if (slot.mayPlace(itemstack) && !itemstack.isEmpty() && ItemStack.isSameItemSameTags(itemStack, itemstack)) {
+                    int j = itemstack.getCount() + itemStack.getCount();
+                    int maxSize = Math.min(slot.getMaxStackSize(), itemStack.getMaxStackSize());
                     if (j <= maxSize) {
-                        p_38904_.setCount(0);
+                        itemStack.setCount(0);
                         itemstack.setCount(j);
                         slot.set(itemstack);
                         flag = true;
                     } else if (itemstack.getCount() < maxSize) {
-                        p_38904_.shrink(maxSize - itemstack.getCount());
+                        itemStack.shrink(maxSize - itemstack.getCount());
                         itemstack.setCount(maxSize);
                         slot.set(itemstack);
                         flag = true;
@@ -231,9 +230,9 @@ public class BackpackMenu  extends AbstractContainerMenu implements Supplier<Map
                 }
             }
         }
-        if (!p_38904_.isEmpty()) {
+        if (!itemStack.isEmpty()) {
             if (p_38907_) {
-                i = p_38906_ - 1;
+                i = index - 1;
             } else {
                 i = p_38905_;
             }
@@ -242,16 +241,16 @@ public class BackpackMenu  extends AbstractContainerMenu implements Supplier<Map
                     if (i < p_38905_) {
                         break;
                     }
-                } else if (i >= p_38906_) {
+                } else if (i >= index) {
                     break;
                 }
                 Slot slot1 = this.slots.get(i);
                 ItemStack itemstack1 = slot1.getItem();
-                if (itemstack1.isEmpty() && slot1.mayPlace(p_38904_)) {
-                    if (p_38904_.getCount() > slot1.getMaxStackSize()) {
-                        slot1.set(p_38904_.split(slot1.getMaxStackSize()));
+                if (itemstack1.isEmpty() && slot1.mayPlace(itemStack)) {
+                    if (itemStack.getCount() > slot1.getMaxStackSize()) {
+                        slot1.set(itemStack.split(slot1.getMaxStackSize()));
                     } else {
-                        slot1.set(p_38904_.split(p_38904_.getCount()));
+                        slot1.set(itemStack.split(itemStack.getCount()));
                     }
                     slot1.setChanged();
                     flag = true;
@@ -270,20 +269,22 @@ public class BackpackMenu  extends AbstractContainerMenu implements Supplier<Map
 
 
     @Override
-    public void removed(Player p){
-        super.removed(p);
-        if(!bound && p instanceof ServerPlayer serverPlayer){
-            if(!serverPlayer.isAlive() || serverPlayer.hasDisconnected()){
-                for(int j = 0; j < internal.getSlots(); j++){
-                    p.drop(internal.extractItem(j, internal.getStackInSlot(j).getCount(), false), false);
+    public void removed(Player playerIn) {
+        super.removed(playerIn);
+        if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
+            if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
+                for (int j = 0; j < internal.getSlots(); ++j) {
+                    playerIn.drop(internal.extractItem(j, internal.getStackInSlot(j).getCount(), false), false);
                 }
             } else {
-                for(int i = 0; i < internal.getSlots(); i++){
-                    p.getInventory().placeItemBackInInventory(internal.extractItem(i,internal.getStackInSlot(i).getCount(), false));
+                for (int i = 0; i < internal.getSlots(); ++i) {
+                    playerIn.getInventory().placeItemBackInInventory(internal.extractItem(i, internal.getStackInSlot(i).getCount(), false));
                 }
             }
         }
     }
+
+
 
     public Map<Integer, Slot> get() {
         return customSlots;
