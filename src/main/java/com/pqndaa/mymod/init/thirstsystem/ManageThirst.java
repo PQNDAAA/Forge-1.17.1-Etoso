@@ -92,11 +92,6 @@ public class ManageThirst extends Gui {
 				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), posX + 96, posY + 110, 1, tex_height, currentWidth, bar_height, 10);
 			}
 		}
-		if(event.getType() == RenderGameOverlayEvent.ElementType.DEBUG){
-			drawString(event.getMatrixStack(),mc.font,  "ThirstLevel: "+ thirstdata.getThirstLevel(), 5, 220, Integer.parseInt("FFFFFF", 16));
-			drawString(event.getMatrixStack(),mc.font,  "Saturation: "+ thirstdata.getSaturationLevel(), 5, 230, Integer.parseInt("FFFFFF", 16));
-			drawString(event.getMatrixStack(),mc.font,  "Exhaustion: "+ thirstdata.getExhaustionLevel(), 5, 240, Integer.parseInt("FFFFFF", 16));
-		}
 	}
 
 	@SubscribeEvent

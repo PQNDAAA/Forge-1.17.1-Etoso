@@ -18,10 +18,15 @@ import java.util.function.Supplier;
 public class ThirstInfoMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
     public final static HashMap<String, Object> guistate = new HashMap<>();
     public final Level level;
+
     public final Player p;
     public int x, y, z;
+    public int thirstlevel;
+    public float thirstsaturation,thirstexhaustion;
+
     private IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
+    private final ThirstData thirstdata = new ThirstData();
     private boolean bound = false;
 
     public ThirstInfoMenu(int id, Inventory inv, FriendlyByteBuf fbb) {
@@ -29,6 +34,9 @@ public class ThirstInfoMenu extends AbstractContainerMenu implements Supplier<Ma
         this.p = inv.player;
         this.level = inv.player.level;
         this.internal = new ItemStackHandler(0);
+        this.thirstlevel = thirstdata.getThirstLevel();
+        this.thirstsaturation = thirstdata.getSaturationLevel();
+        this.thirstexhaustion = thirstdata.getExhaustionLevel();
         BlockPos pos = null;
         if (fbb != null) {
             pos = fbb.readBlockPos();

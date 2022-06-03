@@ -9,10 +9,10 @@ import net.minecraft.world.level.GameRules;
 
 public class ThirstData {
 
-    private int thirstLevel = 20;
-    private float saturationLevel;
+    private static int thirstLevel = 20;
+    private static float saturationLevel;
     private int tickTimer;
-    private float exhaustionLevel;
+    private static float exhaustionLevel;
     private int lastThirstLevel;
     private Minecraft mc = Minecraft.getInstance();
     public ThirstData() {
@@ -22,7 +22,7 @@ public class ThirstData {
     @SuppressWarnings("static-access")
     public void tick(Player p) {
         Difficulty difficulty = p.level.getDifficulty();
-        this.lastThirstLevel = this.thirstLevel;
+        this.lastThirstLevel = thirstLevel;
 
         if (!p.isCreative()) {
 
@@ -39,32 +39,32 @@ public class ThirstData {
                 addExhaustion(0.0002F);
             }
 
-            if (this.exhaustionLevel > 3.0F) {
-                this.exhaustionLevel -= 3.0F;
-                if (this.saturationLevel > 0.0F) {
-                    this.saturationLevel = Math.max(this.saturationLevel - 1.0F, 0.0F);
+            if (exhaustionLevel > 3.0F) {
+                exhaustionLevel -= 3.0F;
+                if (saturationLevel > 0.0F) {
+                    saturationLevel = Math.max(saturationLevel - 1.0F, 0.0F);
                 } else if (difficulty != difficulty.PEACEFUL) {
-                    this.thirstLevel = Math.max(this.thirstLevel - 1, 0);
+                    thirstLevel = Math.max(thirstLevel - 1, 0);
                 }
             }
             boolean flag = p.level.getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION);
-            if (flag && this.saturationLevel > 0.0F && p.isHurt() && this.thirstLevel >= 20) {
+            if (flag && saturationLevel > 0.0F && p.isHurt() && thirstLevel >= 20) {
                 ++this.tickTimer;
                 if (this.tickTimer >= 20) {
-                    float f = Math.min(this.saturationLevel, 6.0F);
+                    float f = Math.min(saturationLevel, 6.0F);
                     p.heal(f / 6.0F);
                     addExhaustion(f);
                     this.tickTimer = 0;
                 }
 
-            } else if (flag && this.thirstLevel >= 18 && p.isHurt()) {
+            } else if (flag && thirstLevel >= 18 && p.isHurt()) {
                 ++this.tickTimer;
                 if (this.tickTimer >= 100) {
                     p.heal(1);
                     addExhaustion(6.0F);
                     this.tickTimer = 0;
                 }
-            } else if (this.thirstLevel <= 0) {
+            } else if (thirstLevel <= 0) {
                 ++this.tickTimer;
                 if (this.tickTimer >= 40) {
                     if (p.getHealth() > 1.0F && difficulty == Difficulty.NORMAL || difficulty == Difficulty.HARD || p.getHealth() > 10.0F) {
@@ -79,38 +79,38 @@ public class ThirstData {
     }
 
     public void addExhaustion(float exhaustion) {
-        this.exhaustionLevel = Math.min(this.exhaustionLevel + exhaustion, 40.0F);
+        exhaustionLevel = Math.min(exhaustionLevel + exhaustion, 40.0F);
     }
 
     //GET VARIABLES
 
     public int getThirstLevel() {
-        return this.thirstLevel;
+        return thirstLevel;
     }
     public float getSaturationLevel() {
-        return this.saturationLevel;
+        return saturationLevel;
     }
     public int getLastThirstLevel() {
         return this.lastThirstLevel;
     }
-    public  float getExhaustionLevel() {
-        return this.exhaustionLevel;
+    public float getExhaustionLevel() {
+        return exhaustionLevel;
     }
 
     //SET VARIABLES
 
     public void setThirstLevel(int thirst) {
-        this.thirstLevel = thirst;
+        thirstLevel = thirst;
     }
     public void setSaturationLevel(float saturation) {
-        this.saturationLevel = saturation;
+        saturationLevel = saturation;
     }
     public void setExhaustion(float exhaustion) {
-        this.exhaustionLevel = exhaustion;
+        exhaustionLevel = exhaustion;
     }
 
     public boolean needsThirst() {
-        return this.thirstLevel < 20;
+        return thirstLevel < 20;
     }
 
 

@@ -1,5 +1,6 @@
 package com.pqndaa.mymod.init;
 
+import com.pqndaa.mymod.init.customitems.chest.BackpackMenu;
 import com.pqndaa.mymod.init.thirstsystem.ThirstInfoMenu;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -16,7 +17,9 @@ public class MenuInit {
 
     private static final List<MenuType<?>> REGISTRY = new ArrayList<>();
     public static final MenuType<ThirstInfoMenu> THIRST_INFO = register("thirst_info",
-            (id, inv, extraData) -> new ThirstInfoMenu(id, inv, extraData));
+            (id, inv, fbb) -> new ThirstInfoMenu(id, inv, fbb));
+    public static final MenuType<BackpackMenu> BACKPACK = register("backpack",
+            (id, inv, fbb) -> new BackpackMenu(id, inv, fbb));
 
     private static <T extends AbstractContainerMenu> MenuType<T> register(String registryname, IContainerFactory<T> containerFactory) {
         MenuType<T> menuType = new MenuType<T>(containerFactory);

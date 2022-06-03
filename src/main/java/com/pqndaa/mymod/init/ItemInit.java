@@ -5,6 +5,7 @@ import com.pqndaa.mymod.MainMod;
 import com.pqndaa.mymod.init.customitems.Compass;
 import com.pqndaa.mymod.init.customitems.Water_Bottle;
 import com.pqndaa.mymod.init.customitems.Water_Bottle_Full;
+import com.pqndaa.mymod.init.customitems.chest.Backpack;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.data.Main;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -114,7 +115,7 @@ public class ItemInit {
 			() -> new Water_Bottle_Full(new Item.Properties().tab(MainMod.TAB).stacksTo(1)));
 
 	public static final RegistryObject<Item> BACKPACK = ITEMS.register("backpack",
-			() -> new Item(new Item.Properties().tab(MainMod.TAB).stacksTo(1)));
+			() -> new Backpack(new Item.Properties().tab(MainMod.TAB).stacksTo(1)));
 
 	public static final RegistryObject<Item> COMPASS = ITEMS.register("compass",
 			() -> new Compass(new Item.Properties().tab(MainMod.TAB).stacksTo(1)));

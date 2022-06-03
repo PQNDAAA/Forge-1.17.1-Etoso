@@ -50,10 +50,6 @@ public class BlockInit {
 	public static final RegistryObject<Block> TRITIUM_BLOCK = register("tritium_block",
 			() -> new Block(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.0f)),
 			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
-
-	public static final RegistryObject<Block> PORTAL_BLOCK = register("portal", PortalBlock::new,
-			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
-
 	public static final RegistryObject<Block> BURN_GRASS = register("burn_grass",
 			() -> new Block(BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.GRASS).strength(2.0F,8.0F)),
 			object -> () -> new BlockItem(object.get(), new Item.Properties().tab(MainMod.TAB)));
