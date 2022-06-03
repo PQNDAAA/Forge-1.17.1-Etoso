@@ -2,9 +2,9 @@ modLoader="javafml"
 loaderVersion="[37,)"
 license="PQNDAA"
 [[mods]] 
-modId="mymod" 
+modId="Etoso"
 version="${file.jarVersion}" #mandatory
-displayName="My Mod" 
+displayName="Etoso"
 logoFile="examplemod.png" #optional
 credits="My mod is the better" 
 authors="PQNDAA" 

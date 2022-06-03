@@ -15,7 +15,7 @@ apply plugin: 'maven-publish'
 
 version = '1.0'
 group = 'com.pqndaa.mymod'
-archivesBaseName = 'mymod'
+archivesBaseName = 'Etoso'
 
 // Mojang ships Java 16 to end users in 1.17+ instead of Java 8 in 1.16 or lower, so your mod should target Java 16.
 java.toolchain.languageVersion = JavaLanguageVersion.of(16)
@@ -74,7 +74,7 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'Etoso', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
                 mymod {
@@ -96,7 +96,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "Mymod",
+                "Specification-Title"     : "Etoso",
                 "Specification-Vendor"    : "pqndaa",
                 "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,
