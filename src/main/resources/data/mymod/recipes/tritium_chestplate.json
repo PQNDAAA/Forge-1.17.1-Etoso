@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m m",
+    "mmm",
+    "mmm"
+  ],
+  "key": {
+    "m": {
+      "item": "mymod:tritium_ingot"
+    }
+  },
+  "result": {
+    "item": "mymod:tritium_chestplate",
+    "count": 1
+  }
+}

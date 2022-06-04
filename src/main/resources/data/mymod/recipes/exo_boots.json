@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "m m",
+    "m m"
+  ],
+  "key": {
+    "m": {
+      "item": "mymod:exo_ingot"
+    }
+  },
+  "result": {
+    "item": "mymod:exo_boots",
+    "count": 1
+  }
+}

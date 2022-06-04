@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "mmm",
+    "m m"
+  ],
+  "key": {
+    "m": {
+      "item": "mymod:plaxotium_ingot"
+    }
+  },
+  "result": {
+    "item": "mymod:plaxotium_helmet",
+    "count": 1
+  }
+}
