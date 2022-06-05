@@ -61,13 +61,14 @@ public class ThirstData {
                 ++this.tickTimer;
                 if (this.tickTimer >= 100) {
                     p.heal(1);
-                    addExhaustion(6.0F);
+                    addExhaustion(4.0F);
                     this.tickTimer = 0;
                 }
             } else if (thirstLevel <= 0) {
                 ++this.tickTimer;
                 if (this.tickTimer >= 40) {
-                    if (p.getHealth() > 1.0F && difficulty == Difficulty.NORMAL || difficulty == Difficulty.HARD || p.getHealth() > 10.0F) {
+                    if (p.getHealth() > 1.0F && difficulty == Difficulty.NORMAL || difficulty == Difficulty.HARD
+                            || p.getHealth() > 10.0F) {
                         p.hurt(DamageSource.STARVE, 1.0F);
                     }
                     this.tickTimer = 0;
