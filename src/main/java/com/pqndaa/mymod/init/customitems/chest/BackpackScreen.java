@@ -46,7 +46,8 @@ public class BackpackScreen extends AbstractContainerScreen<BackpackMenu> {
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
         RenderSystem.setShaderTexture(0, texture);
-        this.blit(ms, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+        this.blit(ms, this.leftPos, this.topPos, 0, 0,
+                this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
         RenderSystem.disableBlend();
     }
 

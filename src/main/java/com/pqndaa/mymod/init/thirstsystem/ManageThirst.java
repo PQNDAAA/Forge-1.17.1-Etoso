@@ -114,6 +114,12 @@ public class ManageThirst extends Gui {
 	@SubscribeEvent
 	public void Tick(TickEvent.PlayerTickEvent event) {
 		this.thirstdata.tick(event.player);
+
+		if(event.player.getHealth() <= 0){
+			this.thirstdata.setThirstLevel(20);
+			this.thirstdata.setSaturationLevel(3);
+			this.thirstdata.setExhaustion(0);
+		}
 	}
 
 }

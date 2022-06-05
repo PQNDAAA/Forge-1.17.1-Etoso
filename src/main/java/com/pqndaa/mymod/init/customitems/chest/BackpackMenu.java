@@ -56,14 +56,14 @@ public class BackpackMenu  extends AbstractContainerMenu implements Supplier<Map
                         this.bound = true;
                     });
                 } else if (fbb.readableBytes() > 1) {
-                    fbb.readByte(); // drop padding
+                    fbb.readByte();
                     Entity entity = level.getEntity(fbb.readVarInt());
                     if (entity != null)
                         entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
                             this.internal = capability;
                             this.bound = true;
                         });
-                } else { // might be bound to block
+                } else {
                     BlockEntity ent = inv.player != null ? inv.player.level.getBlockEntity(pos) : null;
                     if (ent != null) {
                         ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
@@ -269,16 +269,17 @@ public class BackpackMenu  extends AbstractContainerMenu implements Supplier<Map
 
 
     @Override
-    public void removed(Player playerIn) {
-        super.removed(playerIn);
-        if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
+    public void removed(Player p) {
+        super.removed(p);
+        if (!bound && p instanceof ServerPlayer serverPlayer) {
             if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
                 for (int j = 0; j < internal.getSlots(); ++j) {
-                    playerIn.drop(internal.extractItem(j, internal.getStackInSlot(j).getCount(), false), false);
+                    p.drop(internal.extractItem(j, internal.getStackInSlot(j).getCount(), false), false);
                 }
             } else {
                 for (int i = 0; i < internal.getSlots(); ++i) {
-                    playerIn.getInventory().placeItemBackInInventory(internal.extractItem(i, internal.getStackInSlot(i).getCount(), false));
+                    p.getInventory().placeItemBackInInventory(internal.extractItem(i, internal.getStackInSlot(i).getCount()
+                            , false));
                 }
             }
         }
