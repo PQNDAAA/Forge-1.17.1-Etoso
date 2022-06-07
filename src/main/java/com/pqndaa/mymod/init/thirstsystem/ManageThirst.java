@@ -73,7 +73,6 @@ public class ManageThirst extends Gui {
 		if (event.getType() == RenderGameOverlayEvent.ElementType.ALL) {
 			if (!mc.player.isCreative() && (!mc.player.isSpectator())) {
 				TextureManager tm = mc.getTextureManager();
-				//Font font = new Font(new ResourceLocation("textures/gui/flowers.ttf"),);
 				RenderSystem.disableDepthTest();
 				RenderSystem.depthMask(false);
 				RenderSystem.enableBlend();
@@ -88,8 +87,10 @@ public class ManageThirst extends Gui {
 				int currentWidth = (int) (oneUnit * this.thirstdata.getThirstLevel());
 
 				//mc.player.sendMessage(new TextComponent("Waterlevel: " + this.thirstdata.getThirstLevel()), mc.player.getUUID());
-				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), posX + 96, posY + 110, 0, 0, tex_width, tex_height, 10);
-				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), posX + 96, posY + 110, 1, tex_height, currentWidth, bar_height, 10);
+				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), posX + 96, posY + 110, 0, 0,
+						tex_width, tex_height, 10);
+				GuiUtils.drawTexturedModalRect(event.getMatrixStack(), posX + 96, posY + 110, 1,
+						tex_height, currentWidth, bar_height, 10);
 			}
 		}
 	}
@@ -103,7 +104,8 @@ public class ManageThirst extends Gui {
 			if(thirstdata.needsThirst()) {
 				thirstdata.setThirstLevel(thirstdata.getThirstLevel() + 1);
 				thirstdata.setSaturationLevel(thirstdata.getSaturationLevel() + 4);
-				event.getWorld().playSound((Player) null, event.getPlayer().getX(), event.getPlayer().getY(), event.getPlayer().getZ(),
+				event.getWorld().playSound((Player) null, event.getPlayer().getX(), event.getPlayer().getY(),
+						event.getPlayer().getZ(),
 						SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.NEUTRAL, 1.0F, 1.0F);
 				event.getPlayer().setItemInHand(InteractionHand.MAIN_HAND,new ItemStack(ItemInit.WATER_BOTTLE.get()));
 				}

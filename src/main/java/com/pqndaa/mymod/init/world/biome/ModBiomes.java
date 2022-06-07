@@ -35,7 +35,8 @@ public class ModBiomes {
     }
     private static void addBiome(Biome biome, BiomeManager.BiomeType type, int weight, BiomeDictionary.Type... types)
     {
-        ResourceKey<Biome> key = ResourceKey.create(ForgeRegistries.Keys.BIOMES, Objects.requireNonNull(ForgeRegistries.BIOMES.getKey(biome)));
+        ResourceKey<Biome> key = ResourceKey.create(ForgeRegistries.Keys.BIOMES,
+                Objects.requireNonNull(ForgeRegistries.BIOMES.getKey(biome)));
 
         BiomeDictionary.addTypes(key,types);
         BiomeManager.addBiome(type, new BiomeManager.BiomeEntry(key,weight));

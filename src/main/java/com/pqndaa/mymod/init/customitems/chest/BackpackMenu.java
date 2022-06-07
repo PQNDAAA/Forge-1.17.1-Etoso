@@ -145,6 +145,24 @@ public class BackpackMenu  extends AbstractContainerMenu implements Supplier<Map
             }));
             this.customSlots.put(35, this.addSlot(new SlotItemHandler(internal, 35, 151, 68) {
             }));
+          //  int j = 7;
+           // for(int i = -1; i != 8; i++) {
+
+             //   this.customSlots.put(i, this.addSlot(new SlotItemHandler(internal, i, j, 14)));
+               // j += 18;
+            //}
+            //for(int i = 8; i!=17; i++){
+              //  this.customSlots.put(i, this.addSlot(new SlotItemHandler(internal, i, j, 32)));
+                //j+=18;
+            //}
+            //for (int i = 17; i!=26;i++){
+              //  this.customSlots.put(i, this.addSlot(new SlotItemHandler(internal, i, j, 50)));
+            //j+=18;
+  //      }
+    //    for (int i = 26; i!=35;i++){
+      //      this.customSlots.put(i, this.addSlot(new SlotItemHandler(internal, i, j, 68)));
+        //    j+=18;
+        //}
             for (int si = 0; si < 3; ++si)
                 for (int sj = 0; sj < 9; ++sj)
                     this.addSlot(new Slot(inv, sj + (si + 1) * 9, 0 + 8 + sj * 18, 11 + 84 + si * 18));

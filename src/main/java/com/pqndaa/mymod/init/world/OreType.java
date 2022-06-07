@@ -1,6 +1,7 @@
 package com.pqndaa.mymod.init.world;
 
 import com.pqndaa.mymod.init.BlockInit;
+import net.minecraft.world.food.FoodData;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.util.Lazy;
 
